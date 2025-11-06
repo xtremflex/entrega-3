@@ -189,60 +189,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function spinWheel(winningNumber) {
     return new Promise(resolve => {
-      // 1. Busca el índice del número ganador en nuestro array ANTI-HORARIO
       const index = wheelNumbersOrder.indexOf(winningNumber);
       const slotAngle = 360 / wheelNumbersOrder.length;
 
-      // 2. Calcula el ángulo de detención (centrado en el slot)
       const targetAngle = (index * slotAngle);
       const randomAngle = Math.random() * 360;
 
-      // 3. CÁLCULO DE LA RULETA (IMAGEN)
-      // 5 rotaciones (sentido horario) + la posición final ANTI-HORARIA (-targetAngle)
-      const wheelRotation = (360 * 9) + targetAngle;
-
-      // 4. CÁLCULO DE LA BOLA
-      // 8 rotaciones (sentido anti-horario) + la misma posición final ANTI-HORARIA (-targetAngle)
-      // La bola gira en dirección opuesta, pero ambas deben aterrizar en el mismo ángulo.
+      const wheelRotation = (360 * 9) + targetAngle + randomAngle;
       const ballRotation = (360 * -15) + wheelRotation - targetAngle;
 
-      // 5. ANIMACIÓN
-
-      // Animación de la ruleta (imagen)
-      wheel.style.transition = 'all 4s cubic-bezier(0.2, 0.8, 0.7, 1)'; // Ease-out
+      wheel.style.transition = 'all 4s cubic-bezier(0.2, 0.8, 0.7, 1)';
       wheel.style.transform = `rotate(${wheelRotation}deg)`;
 
-      // Animación de la bola
-      ball.style.transition = 'all 4s cubic-bezier(0.1, 0.5, 0.3, 1)'; // Diferente ease
+      ball.style.transition = 'all 4s cubic-bezier(0.1, 0.5, 0.3, 1)';
       ball.style.transform = `rotate(${ballRotation}deg)`;
 
       setTimeout(() => {
-        // 6. RESETEO
-        // Resetear transiciones para el próximo giro
         wheel.style.transition = 'none';
         ball.style.transition = 'none';
 
-        // "Fijar" la rotación final (un valor entre -360 y 0)
         const finalRotationWheel = wheelRotation % 360;
         const finalRotationBall = ballRotation % 360;
 
-        // Ambas deben fijarse en la misma rotación final
         wheel.style.transform = `rotate(${finalRotationWheel}deg)`;
         ball.style.transform = `rotate(${finalRotationBall}deg)`;
 
         resolve();
-      }, 4100); // 4.1 segundos
+      }, 4100);
     });
   }
 
   function showResultDisplay(message, type) {
     resultDisplay.textContent = message
-    resultDisplay.parentElement.className = `result-display-${type}` // Cambia el color (verde, rojo, negro, error)
+    resultDisplay.parentElement.className = `result-display-${type}`
     resultDisplay.parentElement.style.opacity = 1
 
     setTimeout(() => {
       resultDisplay.parentElement.style.opacity = 0;
-    }, 3000) // Ocultar después de 3 segundos
+    }, 3000)
   }
 
   function resetGame() {
