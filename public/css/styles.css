@@ -1002,7 +1002,7 @@ main {
     }
   
     #ball {
-      top: calc(50% - 557.5px);
+      top: calc(50% - 257.5px);
       transform-origin: 7.5px 200px;
     }
 }
