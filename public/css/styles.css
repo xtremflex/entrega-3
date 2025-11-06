@@ -1002,65 +1002,6 @@ main {
     }
   
     #ball {
-      transform-origin: 7.5px 250px;
-    }
-}
-
-/* RESPONSIVO */
-@media (max-width: 1024px) {
-    main {
-        grid-template-columns: 50% 50%;
-    }
-}
-
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px 20px;
-    }
-    
-    .logo-nav-container {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .menu-principal ul {
-        gap: 15px;
-    }
-    
-    main {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 400px;
-    }
-    
-    .contenido-izquierdo {
-        order: 2;
-        padding: 30px 20px;
-    }
-    
-    .contenido-derecho {
-        order: 1;
-    }
-    
-    .btn-jugar {
-        align-self: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .menu-principal ul {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-    
-    .accesos {
-        flex-direction: column;
-        width: 100%;
-    }
-    
-    .btn-registro, .btn-acceso {
-        width: 100%;
+      transform-origin: 7.5px 200px;
     }
 }
