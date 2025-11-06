@@ -786,17 +786,10 @@ main {
   background: #fff;
   border-radius: 50%;
   position: absolute;
-  /* Inicia en el borde superior (25px) y centrada horizontalmente */
-  top: 25px; 
+  top: calc(50% - 207.5px); 
   left: calc(50% - 7.5px);
   z-index: 10;
   box-shadow: 0 0 5px rgba(255,255,255,0.7);
-  
-  /* PUNTO DE GIRO IMPORTANTE:
-    Ruleta (450px) -> Centro en 225px
-    Bola (top 25px) -> Origen Y = 225px - 25px = 200px
-    Bola (width 15px) -> Origen X = 7.5px
-  */
   transform-origin: 7.5px 200px;
 }
 
