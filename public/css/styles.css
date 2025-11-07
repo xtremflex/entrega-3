@@ -1,14 +1,14 @@
 :root {
-  --green: #0A8754;
-  --red: #EF3054;
-  --yellow: #E6B800;
-  --yellow-alt: #FFCC00;
-  --roulette-red: #CC0000;
-  --roulette-black: #222222;
-  --roulette-green: #0A8754;
-  --roulette-gold: #E6B800;
-  --roulette-wood: #5A3822;
-  --betting-green: #075A3A;
+    --green:             #0A8754;
+    --red:               #EF3054;
+    --yellow:            #E6B800;
+    --yellow-alt:        #FFCC00;
+    --roulette-red:      #CC0000;
+    --roulette-black:    #222222;
+    --roulette-green:    #0A8754;
+    --roulette-gold:     #E6B800;
+    --roulette-wood:     #5A3822;
+    --betting-green:     #075A3A;
 }
 
 * {
@@ -18,991 +18,1004 @@
     padding:        0;
 }
 
+/* ==================================================== */
+/* =================== MAIN LAYOUT ==================== */
+/* ==================================================== */
+
 body {
-    background-color:       #0d0d0d;
-    background-image:       url('/images/bg/ruleta.png');
-    background-size:        cover;
-    background-position:    center;
-    background-repeat:      no-repeat;
-    background-attachment:  fixed;
-    color:                  #ffffff;
-    display:                flex;
-    flex-direction:         column;
-    line-height:            1.6;
-    min-height:             100vh;
-    min-height:             100svh;
+    background-color:         #0d0d0d;
+    background-image:         url('/images/bg/ruleta.png');
+    background-size:          cover;
+    background-position:      center;
+    background-repeat:        no-repeat;
+    background-attachment:    fixed;
+    color:                    #fff;
+    display:                  flex;
+    flex-direction:           column;
+    line-height:              1.6;
+    min-height:               100vh;
+    min-height:               100svh;
 }
 
 .contenedor-principal {
-    background:             rgba(13, 13, 13, 0.85);
-    display:                flex;
-    flex:                   1;
-    flex-direction:         column;
-    height:                 100vh;
-    justify-content:        center;
+    background:         rgba(13, 13, 13, 0.85);
+    display:            flex;
+    flex:               1;
+    flex-direction:     column;
+    height:             100vh;
+    justify-content:    center;
 }
 
 header {
-    align-items:            center;
-    background:             #1a1a1a;
-    display:                flex;
-    flex-wrap:              wrap;
-    justify-content:        space-between;
-    max-height:             120px;
-    padding:                15px 40px;
-    position:               sticky;
-    top:                    0;
-    z-index:                1000;
+    align-items:        center;
+    background:         #1a1a1a;
+    display:            flex;
+    flex-wrap:          wrap;
+    justify-content:    space-between;
+    max-height:         120px;
+    padding:            15px 40px;
+    position:           sticky;
+    top:                0;
+    z-index:            1000;
 }
 
 footer {
-    background:             #1a1a1a;
-    bottom:                 0;
-    left:                   0;
-    padding:                20px;
-    text-align:             center;
-    width:                  100%;
+    background:    #1a1a1a;
+    bottom:        0;
+    left:          0;
+    padding:       20px;
+    text-align:    center;
+    width:         100%;
 }
 
 .logo-nav-container {
-    align-items:            center;
-    display:                flex;
-    gap:                    50px;
+    align-items:    center;
+    display:        flex;
+    gap:            50px;
 }
 
 .logo img {
-    height:                 80px;
-    width:                  auto;
+    height:    80px;
+    width:     auto;
 }
 
 .menu-principal ul {
-    display:                flex;
-    gap:                    30px;
-    list-style:             none;
-    margin:                 0;
-    padding:                0;
+    display:       flex;
+    gap:           30px;
+    list-style:    none;
+    margin:        0;
+    padding:       0;
 }
 
 .nav-actual {
-    color:                  var(--green);
-    font-size:              1.1rem;
-    font-weight:            bold;
-    position:               relative;
-    border-bottom:          2px solid var(--green);
-    text-underline-offset: 4px;
+    color:                    var(--green);
+    font-size:                1.1rem;
+    font-weight:              bold;
+    position:                 relative;
+    border-bottom:            2px solid var(--green);
+    text-underline-offset:    4px;
 }
 
 .menu-principal a {
-    color:                  #ffffff;
-    font-size:              1.1rem;
-    font-weight:            bold;
-    padding:                5px 0;
-    position:               relative;
-    text-decoration:        none;
-    transition:             color 0.3s ease;
+    color:              #fff;
+    font-size:          1.1rem;
+    font-weight:        bold;
+    padding:            5px 0;
+    position:           relative;
+    text-decoration:    none;
+    transition:         color 0.3s ease;
 }
 
 .menu-principal a:hover {
-    color:                  var(--yellow);
+    color:    var(--yellow);
 }
 
 .menu-principal a::after {
-    background:             var(--yellow);
-    bottom:                 0;
-    content:                '';
-    position:               absolute;
-    left:                   0;
-    width:                  0;
-    height:                 2px;
-    transition:             width 0.3s ease;
+    background:    var(--yellow);
+    bottom:        0;
+    content:       '';
+    position:      absolute;
+    left:          0;
+    width:         0;
+    height:        2px;
+    transition:    width 0.3s ease;
 }
 
 .menu-principal a:hover::after {
-    width:                  100%;
+    width:    100%;
 }
 
 .accesos {
-    display:                flex;
-    gap:                    15px;
+    display:    flex;
+    gap:        15px;
 }
 
 .btn {
-  display:                inline-block;
-  padding:                10px 20px;
-  font-weight:            bold;
-  text-decoration:        none;
-  border-radius:          8px;
-  text-align:             center;
-  transition:             all 0.3s ease;
+    display:            inline-block;
+    padding:            10px 20px;
+    font-weight:        bold;
+    text-decoration:    none;
+    border-radius:      8px;
+    text-align:         center;
+    transition:         all 0.3s ease;
 }
 
 .btn-acceso {
-  background: var(--yellow);
-  color:      #000000;
-  min-width:  100px;
+    background:    var(--yellow);
+    color:         #000;
+    min-width:     100px;
 }
 
 .btn-acceso:hover {
-  background:             var(--yellow-alt);
-  transform:              translateY(-2px);
+    background:    var(--yellow-alt);
+    transform:     translateY(-2px);
 }
 
 .btn-actual {
-  background: var(--green);
-  color:      #000000;
-  min-width:  100px;
+    background:    var(--green);
+    color:         #000000;
+    min-width:     100px;
 }
 
 .btn-volver {
-  position: sticky;
-  top: 40px;
-  background: var(--red);
-  border: none;
-  cursor: pointer;
-  color: #FFFFFF;
-  min-width: 100px;
-  align-self: flex-start;
-  margin: 40px;
+    position:      sticky;
+    top:           40px;
+    background:    var(--red);
+    border:        none;
+    cursor:        pointer;
+    color:         #FFF;
+    min-width:     100px;
+    align-self:    flex-start;
+    margin:        40px;
 }
 
 .btn-volver:hover {
-  background:             #FFFFFF;
-  color: var(--red);
-  transform:              translateY(-2px);
+    background:    #FFF;
+    color:         var(--red);
+    transform:     translateY(-2px);
 }
 
 main {
-    display:                grid;
-    grid-template-columns:  40% 60%;
-    min-height:             calc(100vh - 160px);
+    display:                  grid;
+    grid-template-columns:    40% 60%;
+    min-height:               calc(100vh - 160px);
 }
 
 
 
 
 
-/* ============ PAGINA DE INICIO ============ */
+/* ==================================================== */
+/* ====================== INICIO ====================== */
+/* ==================================================== */
 
 .contenido-izquierdo {
-    background:             #0d0d0d;
-    padding:                40px;
-    display:                flex;
-    flex-direction:         column;
-    justify-content:        center;
+    background:         #0d0d0d;
+    padding:            40px;
+    display:            flex;
+    flex-direction:     column;
+    justify-content:    center;
 }
 
 .texto-bienvenida h1 {
-    color:                  var(--yellow);
-    font-size:              2.5rem;
-    margin-bottom:          20px;
+    color:            var(--yellow);
+    font-size:        2.5rem;
+    margin-bottom:    20px;
 }
 
 .texto-bienvenida p {
-    margin-bottom:          20px;
-    font-size:              1.1rem;
-    line-height:            1.7;
-    text-align:             justify;
+    margin-bottom:    20px;
+    font-size:        1.1rem;
+    line-height:      1.7;
+    text-align:       justify;
 }
 
 .btn-jugar {
-    background:             var(--yellow);
-    color:                  #000000;
-    padding:                12px 30px;
-    font-size:              1.2rem;
-    margin-top:             20px;
-    align-self:             flex-start;
+    background:    var(--yellow);
+    color:         #000;
+    padding:       12px 30px;
+    font-size:     1.2rem;
+    margin-top:    20px;
+    align-self:    flex-start;
 }
 
 .btn-jugar:hover {
-    background:             var(--yellow-alt);
-    transform:              translateY(-2px);
+    background:    var(--yellow-alt);
+    transform:     translateY(-2px);
 }
 
 .contenido-derecho {
-    position:               sticky;
-    top:                    69px;
-    width:                  100%;
-    height:                 calc(100vh - 69px);
-    overflow:               hidden;
+    position:    sticky;
+    top:         69px;
+    width:       100%;
+    height:      calc(100vh - 69px);
+    overflow:    hidden;
 }
 
 .contenido-derecho img {
-    position:               absolute;
-    top:                    50%;
-    left:                   50%;
-    width:                  100%;
-    height:                 100%;
-    object-fit:             cover;
-    transform:              translate(-50%, -50%);
+    position:      absolute;
+    top:           50%;
+    left:          50%;
+    width:         100%;
+    height:        100%;
+    object-fit:    cover;
+    transform:     translate(-50%, -50%);
 }
 
 .saldo {
-    color:                  var(--green);
+    color:    var(--green);
 }
 
 
 
 
-
-/* ============ LOGIN / REGISTER ============ */
+/* ==================================================== */
+/* ================= LOGIN / REGISTER ================= */
+/* ==================================================== */
 
 .form-register {
-    width:                  100%;
-    max-width:              450px;
-    background:             #1a1a1a;
-    padding:                40px;
-    margin:                 40px auto;
-    border-radius:          10px;
-    border-width:           1px;
-    border-style:           solid;
-    border-color:           #333333;
-    color:                  #ffffff;
-    text-align:             center;
+    width:            100%;
+    max-width:        450px;
+    background:       #1a1a1a;
+    padding:          40px;
+    margin:           40px auto;
+    border-radius:    10px;
+    border-width:     1px;
+    border-style:     solid;
+    border-color:     #333;
+    color:            #fff;
+    text-align:       center;
 }
 
 .form-register h3 {
-    font-family:            'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size:              28px;
-    margin-bottom:          30px;
-    text-align:             center;
-    color:                  var(--yellow);
+    font-family:      'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:        28px;
+    margin-bottom:    30px;
+    text-align:       center;
+    color:            var(--yellow);
 }
 
 .form-register p {
-    margin:                 20px 0 10px 0;
-    font-size:              15px;
+    margin:       20px 0 10px 0;
+    font-size:    15px;
 }
 
 .form-register a {
-    color:                  var(--yellow);
-    text-decoration:        none;
-    font-weight:            bold;
-    transition:             color 0.3s ease;
+    color:              var(--yellow);
+    text-decoration:    none;
+    font-weight:        bold;
+    transition:         color 0.3s ease;
 }
 
 .form-register a:hover {
-    color:                  var(--yellow-alt);
-    text-decoration:        underline;
+    color:              var(--yellow-alt);
+    text-decoration:    underline;
 }
 
 .controls {
-    width:                  100%;
-    background:             #0d0d0d;
-    padding:                14px;
-    border-radius:          8px;
-    border-width:           1px;
-    border-style:           solid; 
-    border-color:           #333333;
-    margin-bottom:          20px;
-    font-size:              16px;
-    color:                  #ffffff;
+    width:            100%;
+    background:       #0d0d0d;
+    padding:          14px;
+    border-radius:    8px;
+    border-width:     1px;
+    border-style:     solid; 
+    border-color:     #333;
+    margin-bottom:    20px;
+    font-size:        16px;
+    color:            #fff;
 }
 
 .controls::placeholder {
-    color:                  #ffffff;
-    opacity:                0.8;
+    color:      #fff;
+    opacity:    0.8;
 }
 
 .controls:focus {
-    outline:                none;
-    border-color:           var(--yellow);
-    box-shadow:             0 0 3px rgba(230, 184, 0, 0.3);
+    outline:         none;
+    border-color:    var(--yellow);
+    box-shadow:      0 0 3px rgba(230, 184, 0, 0.3);
 }
 
 .botons {
-    width:                  100%;
-    background:             var(--yellow);
-    border:                 none;
-    padding:                15px;
-    color:                  #000000;
-    margin:                 25px 0 15px 0;
-    font-size:              18px;
-    font-weight:            bold;
-    border-radius:          8px;
-    cursor:                 pointer;
-    transition:             all 0.3s ease;
+    width:            100%;
+    background:       var(--yellow);
+    border:           none;
+    padding:          15px;
+    color:            #000;
+    margin:           25px 0 15px 0;
+    font-size:        18px;
+    font-weight:      bold;
+    border-radius:    8px;
+    cursor:           pointer;
+    transition:       all 0.3s ease;
 }
 
 .botons:hover {
-    background:             var(--yellow-alt);
-    transform:              translateY(-2px);
+    background:    var(--yellow-alt);
+    transform:     translateY(-2px);
 }
 
 .botons-iniciar-sesion {
-    width: 100%;
-    background: var(--yellow);
-    border: none;
-    padding: 15px;
-    color: #000000;
-    margin: 25px 0 15px 0;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.3s ease;
+    width:            100%;
+    background:       var(--yellow);
+    border:           none;
+    padding:          15px;
+    color:            #000;
+    margin:           25px 0 15px 0;
+    font-size:        18px;
+    font-weight:      bold;
+    border-radius:    8px;
+    cursor:           pointer;
+    text-align:       center;
+    transition:       all 0.3s ease;
 }
 
 .botons-iniciar-sesion:hover {
-    background: var(--yellow-alt);
-    transform: translateY(-2px);
+    background:    var(--yellow-alt);
+    transform:     translateY(-2px);
 }
 
+
+
+
+
+/* ==================================================== */
+/* =================== CLEAN LAYOUT =================== */
+/* ==================================================== */
+
 .back-arrow {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 18px;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
+    position:           absolute;
+    top:                20px;
+    left:               20px;
+    font-size:          18px;
+    text-decoration:    none;
+    color:              white;
+    font-weight:        bold;
 }
 
 .back-arrow:hover {
-    color: var(--yellow);
+    color:    var(--yellow);
 }
 
 
 
 
 
-/* ============ PERFIL DE USUARIO ============ */
+/* ==================================================== */
+/* ====================== PERFIL ====================== */
+/* ==================================================== */
 
 .seccion-perfil {
-    background: #1a1a1a;
-    padding: 25px 30px;
-    border-radius: 12px;
-    margin-bottom: 25px;
-    border: 1px solid #333;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    background:       #1a1a1a;
+    padding:          25px 30px;
+    border-radius:    12px;
+    margin-bottom:    25px;
+    border:           1px solid #333;
+    box-shadow:       0 4px 10px rgba(0,0,0,0.4);
+    transition:       transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .seccion-perfil:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+    transform:     translateY(-3px);
+    box-shadow:    0 6px 15px rgba(0,0,0,0.6);
 }
 
 .seccion-perfil h2 {
-    font-size: 1.5rem;
-    color: var(--yellow);
-    margin-bottom: 15px;
-    border-bottom: 2px solid var(--yellow);
-    padding-bottom: 8px;
+    font-size:         1.5rem;
+    color:             var(--yellow);
+    margin-bottom:     15px;
+    border-bottom:     2px solid var(--yellow);
+    padding-bottom:    8px;
 }
 
 .info-usuario p {
-    margin: 8px 0;
-    font-size: 1.05rem;
-    color: #f2f2f2;
+    margin:       8px 0;
+    font-size:    1.05rem;
+    color:        #f2f2f2;
 }
 
 .saldo-actual {
-    text-align: center;
-    margin-top: 10px;
+    text-align:    center;
+    margin-top:    10px;
 }
 
 .monto-saldo {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--green);
+    font-size:      2rem;
+    font-weight:    bold;
+    color:          var(--green);
 }
 
 .tabla-transacciones {
-    overflow-x: auto;
+    overflow-x:    auto;
 }
 
 .tabla-transacciones table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
+    width:              100%;
+    border-collapse:    collapse;
+    text-align:         center;
 }
 
 .tabla-transacciones th, 
 .tabla-transacciones td {
-    padding: 12px 15px;
-    border-bottom: 1px solid #333;
-    font-size: 1rem;
+    padding:          12px 15px;
+    border-bottom:    1px solid #333;
+    font-size:        1rem;
 }
 
 .tabla-transacciones th {
-    background: var(--yellow);
-    color: black;
-    font-weight: bold;
-    text-transform: uppercase;
+    background:        var(--yellow);
+    color:             black;
+    font-weight:       bold;
+    text-transform:    uppercase;
 }
 
 .tabla-transacciones tr:hover {
-    background: rgba(255,255,255,0.05);
-    transition: background 0.2s ease;
+    background:    rgba(255,255,255,0.05);
+    transition:    background 0.2s ease;
 }
 
 .monto-positivo {
-    color: var(--green);
-    font-weight: bold;
+    color:          var(--green);
+    font-weight:    bold;
 }
 
 .monto-negativo {
-    color: #ff4d4d;
-    font-weight: bold;
+    color:          #ff4d4d;
+    font-weight:    bold;
 }
 
 
 
 
 
-/* ============ PAGINA DE REGLAS ============ */
+/* ==================================================== */
+/* ====================== REGLAS ====================== */
+/* ==================================================== */
 
 .seccion-reglas {
-    background: rgba(13, 13, 13, 0.85);
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid #333;
-    margin-top: 20px;
+    background:       rgba(13, 13, 13, 0.85);
+    padding:          30px;
+    border-radius:    12px;
+    border:           1px solid #333;
+    margin-top:       20px;
 }
 
 .seccion-reglas h1,
 .texto-bienvenida h1 {
-    color: var(--yellow);
-    margin-bottom: 20px;
-    font-size: 2rem;
-    text-align: left;
+    color:            var(--yellow);
+    margin-bottom:    20px;
+    font-size:        2rem;
+    text-align:       left;
 }
 
 .seccion-reglas details {
-    margin-bottom: 15px;
-    border: 1px solid #333;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #1a1a1a;
-    transition: all 0.3s ease;
+    margin-bottom:    15px;
+    border:           1px solid #333;
+    border-radius:    8px;
+    overflow:         hidden;
+    background:       #1a1a1a;
+    transition:       all 0.3s ease;
 }
 
 .seccion-reglas summary {
-    cursor: pointer;
-    padding: 15px 20px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: var(--yellow);
-    background: #111;
-    list-style: none;
-    position: relative;
+    cursor:         pointer;
+    padding:        15px 20px;
+    font-size:      1.1rem;
+    font-weight:    bold;
+    color:          var(--yellow);
+    background:     #111;
+    list-style:     none;
+    position:       relative;
 }
 
 .seccion-reglas summary::marker {
-    display: none;
+    display:    none;
 }
 
 .seccion-reglas summary::after {
-    content: "+";
-    position: absolute;
-    right: 20px;
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
+    content:       "+";
+    position:      absolute;
+    right:         20px;
+    font-size:     1.2rem;
+    transition:    transform 0.3s ease;
 }
 
 .seccion-reglas details[open] summary::after {
-    content: "-";
+    content:    "-";
 }
 
 .panel-content {
-    padding: 20px;
-    color: #ddd;
-    line-height: 1.6;
-    background: #1a1a1a;
+    padding:        20px;
+    color:          #ddd;
+    line-height:    1.6;
+    background:     #1a1a1a;
 }
 
 .panel-content h3 {
-    color: var(--green);
-    margin: 15px 0 10px;
+    color:     var(--green);
+    margin:    15px 0 10px;
 }
 
 .panel-content ul,
 .panel-content ol {
-    margin-left: 20px;
-    margin-top: 10px;
+    margin-left:    20px;
+    margin-top:     10px;
 }
 
 .panel-content table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
+    width:              100%;
+    border-collapse:    collapse;
+    margin-top:         15px;
 }
 
 .panel-content table th,
 .panel-content table td {
-    border: 1px solid #333;
-    padding: 10px;
-    text-align: center;
+    border:        1px solid #333;
+    padding:       10px;
+    text-align:    center;
 }
 
 .panel-content table th {
-    background: var(--yellow);
-    color: #000;
+    background:    var(--yellow);
+    color:         #000;
 }
 
 .panel-content table tr:nth-child(even) {
-    background: #222;
+    background:    #222;
 }
 
 
 
 
 
-/* ====== Estilos para Sobre Nosotros ====== */
+/* ==================================================== */
+/* ================== Sobre Nosotros ================== */
+/* ==================================================== */
 
 .sobre-nosotros-izq {
-    background: #0d0d0d;
-    padding: 40px;
-    max-width: 800px;
+    background:    #0d0d0d;
+    padding:       40px;
+    max-width:     800px;
 }
 
 .info-container {
-    background: #0d0d0d;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    background:        #0d0d0d;
+    padding:           30px;
+    border-radius:     12px;
+    box-shadow:        0 0 20px rgba(0, 0, 0, 0.5);
+    display:           flex;
+    flex-direction:    column;
+    gap:               30px;
 }
 
 .info-titulo {
-    color: var(--yellow);
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    text-align: left;
-    border-bottom: 2px solid var(--yellow-alt);
-    padding-bottom: 10px;
+    color:             var(--yellow);
+    font-size:         2.5rem;
+    margin-bottom:     20px;
+    text-align:        left;
+    border-bottom:     2px solid var(--yellow-alt);
+    padding-bottom:    10px;
 }
 
 .info-seccion {
-    background: #121212;
-    padding: 20px;
-    border-radius: 8px;
+    background:       #121212;
+    padding:          20px;
+    border-radius:    8px;
 }
 
 .info-seccion h2 {
-    color: var(--yellow-alt);
-    font-size: 1.6rem;
-    margin-bottom: 10px;
-    border-bottom: 1px solid var(--yellow);
-    padding-bottom: 5px;
+    color:             var(--yellow-alt);
+    font-size:         1.6rem;
+    margin-bottom:     10px;
+    border-bottom:     1px solid var(--yellow);
+    padding-bottom:    5px;
 }
 
 .info-seccion p,
 .info-seccion ul,
 .info-seccion ol {
-    list-style-type: disc;
-    padding-left: 30px;
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 15px;
-    color: #ffffff;
+    list-style-type:    disc;
+    padding-left:       30px;
+    font-size:          1.1rem;
+    line-height:        1.7;
+    margin-bottom:      15px;
+    color:              #fff;
 }
 
 .info-seccion ul li,
 .info-seccion ol li {
-    margin-bottom: 8px;
-    padding-left: 10px;
+    margin-bottom:    8px;
+    padding-left:     10px;
 }
 
 .info-seccion ul li::marker {
-    color: var(--yellow);
+    color:    var(--yellow);
 }
 
 .info-seccion ol li::marker {
-    color: var(--yellow-alt);
+    color:    var(--yellow-alt);
 }
 
 
 
 
 
+/* ==================================================== */
 /* ================== MESA DE RULETA ================== */
+/* ==================================================== */
 
 .btn-girar {
-    background:             var(--green);
-    color:                  #FFF;
-    padding:                12px 30px;
-    font-size:              1.2rem;
-    align-self:             flex-start;
+    background:    var(--green);
+    color:         #FFF;
+    padding:       12px 30px;
+    font-size:     1.2rem;
+    align-self:    flex-start;
 }
 
 .btn-girar:hover {
-    background:             #FFF;
-    color:                  var(--green);
-    transform:              translateY(-3px);
+    background:    #FFF;
+    color:         var(--green);
+    transform:     translateY(-3px);
 }
 
 .btn-limpiar {
-    background:             var(--red);
-    color:                  #FFF;
-    padding:                12px 30px;
-    font-size:              1.2rem;
-    align-self:             flex-start;
+    background:    var(--red);
+    color:         #FFF;
+    padding:       12px 30px;
+    font-size:     1.2rem;
+    align-self:    flex-start;
 }
 
 .btn-limpiar:hover {
-    background:             var(--roulette-red);
-    transform:              translateY(-3px);
+    background:    var(--roulette-red);
+    transform:     translateY(-3px);
 }
 
 .roulette-container {
-    display: grid;
-    grid-template-columns: 320px 1fr; /* Columna fija para info, resto para juego */
-    grid-template-rows: 1fr;
-    height: calc(100vh - 120px); /* Altura completa menos el header */
-    width: 100%;
-    overflow: hidden;
-    background: rgba(0, 0, 0, 0.3);
+    display:                  grid;
+    grid-template-columns:    320px 1fr;
+    grid-template-rows:       1fr;
+    height:                   calc(100vh - 120px);
+    width:                    100%;
+    overflow:                 hidden;
+    background:               rgba(0, 0, 0, 0.3);
 }
 
-/* --- Panel de Información (Izquierda) --- */
 .game-info-panel {
-    background: #0d0d0d;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    border-right: 2px solid var(--roulette-gold);
-    overflow-y: auto;
-    font-size: 0.9rem;
+    background:        #0d0d0d;
+    padding:           20px;
+    display:           flex;
+    flex-direction:    column;
+    gap:               15px;
+    border-right:      2px solid var(--roulette-gold);
+    overflow-y:        auto;
+    font-size:         0.9rem;
 }
 
 .game-info-panel .info-box {
-    background: #1a1a1a;
-    border-radius: 8px;
-    padding: 15px;
-    border: 1px solid #333;
+    background:       #1a1a1a;
+    border-radius:    8px;
+    padding:          15px;
+    border:           1px solid #333;
 }
 
 .game-info-panel h1 {
-    font-size: 1.5rem;
-    color: var(--yellow);
-    margin-bottom: 5px;
+    font-size:        1.5rem;
+    color:            var(--yellow);
+    margin-bottom:    5px;
 }
 .game-info-panel h2 {
-    font-size: 1.1rem;
-    color: #fff;
-    margin-bottom: 10px;
+    font-size:        1.1rem;
+    color:            #fff;
+    margin-bottom:    10px;
 }
 .game-info-panel h3 {
-    font-size: 1rem;
-    color: var(--yellow-alt);
-    border-bottom: 1px solid #444;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
+    font-size:         1rem;
+    color:             var(--yellow-alt);
+    border-bottom:     1px solid #444;
+    padding-bottom:    5px;
+    margin-bottom:     10px;
 }
 
 .game-info-panel .balance-box span {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--green);
+    font-size:      2rem;
+    font-weight:    bold;
+    color:          var(--green);
 }
 
 #last-numbers-list {
-    display: flex;
-    gap: 5px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    flex-wrap: wrap;
+    display:       flex;
+    gap:           5px;
+    list-style:    none;
+    padding:       0;
+    margin:        0;
+    flex-wrap:     wrap;
 }
 
 #last-numbers-list li {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    border-radius: 50%;
-    color: #fff;
-    border: 1px solid #555;
+    width:              35px;
+    height:             35px;
+    display:            flex;
+    align-items:        center;
+    justify-content:    center;
+    font-weight:        bold;
+    border-radius:      50%;
+    color:              #fff;
+    border:             1px solid #555;
 }
-.number-rojo { background: var(--roulette-red); }
-.number-negro { background: var(--roulette-black); color: #fff; }
-.number-verde { background: var(--roulette-green); }
+.number-rojo {
+    background:    var(--roulette-red);
+}
+.number-negro {
+    background:    var(--roulette-black);
+    color:         #fff;
+}
+.number-verde {
+    background:    var(--roulette-green);
+}
 
 #last-bets-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    list-style:        none;
+    padding:           0;
+    margin:            0;
+    display:           flex;
+    flex-direction:    column;
+    gap:               8px;
 }
 #last-bets-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.85rem;
+    display:            flex;
+    justify-content:    space-between;
+    align-items:        center;
+    font-size:          0.85rem;
 }
-#last-bets-list .result-win { color: var(--green); font-weight: bold; }
-#last-bets-list .result-lose { color: var(--red); }
+#last-bets-list .result-win {
+    color:          var(--green);
+    font-weight:    bold;
+}
+#last-bets-list .result-lose {
+    color:    var(--red);
+}
 
-/* --- Área de Juego (Derecha) --- */
 .game-area {
-    display: grid;
-    /* Grid complejo para posicionar todo */
-    grid-template-columns: 1fr 1.5fr; /* Ruleta | Tablero */
-    grid-template-rows: 1fr auto; /* (Ruleta/Tablero) / Controles */
-    height: 100%;
-    padding: 20px;
-    gap: 20px;
-    overflow: hidden;
+    display:                  grid;
+    grid-template-columns:    1fr 1.5fr; /* Ruleta | Tablero */
+    grid-template-rows:       1fr auto; /* (Ruleta/Tablero) / Controles */
+    height:                   100%;
+    padding:                  20px;
+    gap:                      20px;
+    overflow:                 hidden;
 }
 
-/* --- Contenedor de la Ruleta (Arriba-Izquierda) --- */
 .wheel-container {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    min-width: 450px;
-    min-height: 450px;
+    grid-column:       1 / 2;
+    grid-row:          1 / 2;
+    display:           flex;
+    align-items:       center;
+    justify-content:   center;
+    position:          relative;
+    min-width:         450px;
+    min-height:        450px;
 }
 
 #roulette-wheel {
-  /* Mismo tamaño que la ruleta anterior */
-  width: 450px;
-  height: 450px;
-  
-  /* Mantenemos el borde, sombra y radio del contenedor original */
-  border-radius: 50%;
-  border: 10px solid #333;
-  box-shadow: 0 0 20px rgba(0,0,0,0.7) inset, 0 0 15px rgba(0,0,0,0.5);
-  
-  /* Importante para que la rotación JS funcione */
-  position: relative;
+    width:            450px;
+    height:           450px;
+    border-radius:    50%;
+    border:           10px solid #333;
+    box-shadow:       0 0 20px rgba(0,0,0,0.7) inset, 0 0 15px rgba(0,0,0,0.5);
+    position:         relative;
 }
 
 #ball {
-  width: 15px;
-  height: 15px;
-  background: #fff;
-  border-radius: 50%;
-  position: absolute;
-  top: calc(50% - 207.5px); 
-  left: calc(50% - 7.5px);
-  z-index: 10;
-  box-shadow: 0 0 5px rgba(255,255,255,0.7);
-  transform-origin: 7.5px 200px;
+    width:               15px;
+    height:              15px;
+    background:          #fff;
+    border-radius:       50%;
+    position:            absolute;
+    top:                 calc(50% - 207.5px); 
+    left:                calc(50% - 7.5px);
+    z-index:             10;
+    box-shadow:          0 0 5px rgba(255,255,255,0.7);
+    transform-origin:    7.5px 200px;
 }
 
 #result-display {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0,0,0,0.8);
-  border: 2px solid var(--roulette-gold);
-  padding: 10px 20px;
-  border-radius: 8px;
-  z-index: 20;
-  color: #fff;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+    position:         absolute;
+    top:              50%;
+    left:             50%;
+    transform:        translate(-50%, -50%);
+    background:       rgba(0,0,0,0.8);
+    border:           2px solid var(--roulette-gold);
+    padding:          10px 20px;
+    border-radius:    8px;
+    z-index:          20;
+    color:            #fff;
+    font-size:        1.5rem;
+    font-weight:      bold;
+    text-align:       center;
+    opacity:          0;
+    transition:       opacity 0.3s ease;
 }
-.result-display-rojo { border-color: var(--roulette-red) !important; }
-.result-display-negro { border-color: #555 !important; }
-.result-display-verde { border-color: var(--roulette-green) !important; }
-.result-display-error { border-color: var(--red) !important; }
+.result-display-rojo  { border-color:    var(--roulette-red); }
+.result-display-negro { border-color:    #555; }
+.result-display-verde { border-color:    var(--roulette-green); }
+.result-display-error { border-color:    var(--red); }
 
-
-/* --- Controles (Abajo) --- */
 .controls-container {
-  grid-column: 1 / 3; /* Ocupa todo el ancho inferior */
-  grid-row: 2 / 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  background: #1a1a1a;
-  padding: 15px;
-  border-radius: 8px;
-  border-top: 2px solid var(--roulette-gold);
+    grid-column:        1 / 3;
+    grid-row:           2 / 3;
+    display:            flex;
+    justify-content:    center;
+    align-items:        center;
+    gap:                40px;
+    background:         #1a1a1a;
+    padding:            15px;
+    border-radius:      8px;
+    border-top:         2px solid var(--roulette-gold);
 }
 
 .chip-selection {
-  display: flex;
-  gap: 10px;
+    display:    flex;
+    gap:        10px;
 }
 .chip {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 0.8rem;
-  color: #000;
-  cursor: pointer;
-  border: 3px solid #777;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    width:              50px;
+    height:             50px;
+    border-radius:      50%;
+    display:            flex;
+    align-items:        center;
+    justify-content:    center;
+    font-weight:        bold;
+    font-size:          0.8rem;
+    color:              #000;
+    cursor:             pointer;
+    border:             3px solid #777;
+    transition:         all 0.2s ease;
+    box-shadow:         0 2px 5px rgba(0,0,0,0.3);
 }
 .chip:hover {
-  transform: translateY(-2px);
+    transform:    translateY(-2px);
 }
 .chip.active {
-  border-color: var(--yellow-alt);
-  transform: scale(1.1);
-  box-shadow: 0 0 15px var(--yellow-alt);
+    border-color:    var(--yellow-alt);
+    transform:       scale(1.1);
+    box-shadow:      0 0 15px var(--yellow-alt);
 }
 
-.chip[data-value="100"] { background: #fff; }
-.chip[data-value="500"] { background: var(--red); color: #fff; }
-.chip[data-value="1000"] { background: var(--yellow); }
-.chip[data-value="5000"] { background: #4a90e2; }
-.chip[data-value="10000"] { background: #333; color: #fff; }
+.chip[data-value="100"]   { background:    #fff; }
+.chip[data-value="500"]   { background:    var(--red); color: #fff; }
+.chip[data-value="1000"]  { background:    var(--yellow); }
+.chip[data-value="5000"]  { background:    #4a90e2; }
+.chip[data-value="10000"] { background:    var(--green); color: #fff; } /* OG: #333*/
 
 .action-buttons {
-    display: flex;
-    gap: 15px;
+    display:    flex;
+    gap:        15px;
 }
 .action-buttons .btn {
-    min-width: 150px;
-    font-size: 1.2rem;
-    padding: 15px;
+    min-width:    150px;
+    font-size:    1.2rem;
+    padding:      15px;
 }
 
-/* --- Tablero de Apuestas (Arriba-Derecha) --- */
 .betting-layout-container {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-    background: var(--betting-green);
-    border-radius: 10px;
-    padding: 15px;
-    border: 5px solid var(--roulette-wood);
-    color: #fff;
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
+    grid-column:      2 / 3;
+    grid-row:         1 / 2;
+    background:       var(--betting-green);
+    border-radius:    10px;
+    padding:          15px;
+    border:           5px solid var(--roulette-wood);
+    color:            #fff;
+    font-weight:      bold;
+    display:          flex;
+    flex-direction:   column;
 }
 
 .betting-total {
-    font-size: 1.2rem;
-    color: var(--yellow);
-    text-align: center;
-    margin-bottom: 10px;
+    font-size:        1.2rem;
+    color:            var(--yellow);
+    text-align:       center;
+    margin-bottom:    10px;
 }
 
 .betting-layout {
-    display: grid;
-    grid-template-columns: 50px 1fr; /* 0 | Resto */
-    grid-template-rows: 1fr auto; /* Números | Apuestas externas */
-    flex-grow: 1;
-    gap: 5px;
+    display:                  grid;
+    grid-template-columns:    50px 1fr;
+    grid-template-rows:       1fr auto;
+    flex-grow:                1;
+    gap:                      5px;
 }
 
 .bet-option {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    transition: background 0.2s ease;
-    position: relative;
-    font-size: 1.1rem;
+    display:            flex;
+    align-items:        center;
+    justify-content:    center;
+    border:             1px solid #ccc;
+    cursor:             pointer;
+    transition:         background 0.2s ease;
+    position:           relative;
+    font-size:          1.1rem;
 }
-.bet-option:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
+.bet-option:hover { background:    rgba(255, 255, 255, 0.2); }
 
 .number-0 {
-    grid-row: 1 / 2;
-    background: var(--roulette-green);
+    grid-row:      1 / 2;
+    background:    var(--roulette-green);
 }
 
 .main-grid {
-    display: grid;
-    grid-template-columns: repeat(13, 1fr); /* 12 números + 2:1 */
-    grid-template-rows: repeat(3, 1fr);
-    gap: 2px;
+    display:                  grid;
+    grid-template-columns:    repeat(13, 1fr);
+    grid-template-rows:       repeat(3, 1fr);
+    gap:                      2px;
 }
-.main-grid .bet-option {
-    min-height: 60px;
-}
+.main-grid .bet-option { min-height: 60px; }
 .main-grid .bet-2to1 {
-    background: var(--betting-green);
-    border-left: 2px solid #ccc;
+    background:     var(--betting-green);
+    border-left:    2px solid #ccc;
 }
 
 .outside-bets {
-    width: calc(12/13 * 100%);
-    grid-column: 2 / 3;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 2px;
+    width:                    calc(12/13 * 100%);
+    grid-column:              2 / 3;
+    display:                  grid;
+    grid-template-columns:    repeat(6, 1fr);
+    gap:                      2px;
 }
 .outside-bets .bet-option {
-    min-height: 50px;
-    background: var(--betting-green);
+    min-height:    50px;
+    background:    var(--betting-green);
 }
 .outside-bets .bet-dozen {
-    grid-column: span 2;
+    grid-column:    span 2;
 }
-.bet-red { background: var(--roulette-red) !important; }
-.bet-black { background: var(--roulette-black) !important; }
+.bet-red   { background:    var(--roulette-red); }
+.bet-black { background:    var(--roulette-black); }
 
-/* Colores de números en el tablero */
-.number-red { background: var(--roulette-red); }
-.number-black { background: var(--roulette-black); }
+.number-red   { background:    var(--roulette-red); }
+.number-black { background:    var(--roulette-black); }
 
-/* Fichas Puestas en el Tablero */
+/* fichas en tablero */
 .placed-chip {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    font-weight: bold;
-    color: #000;
-    border: 2px solid rgba(255,255,255,0.8);
-    box-shadow: 0 0 5px rgba(0,0,0,0.5);
-    pointer-events: none; /* Para poder seguir clickeando */
+    position:           absolute;
+    top:                50%;
+    left:               50%;
+    transform:          translate(-50%, -50%);
+    width:              35px;
+    height:             35px;
+    border-radius:      50%;
+    display:            flex;
+    align-items:        center;
+    justify-content:    center;
+    font-size:          0.7rem;
+    font-weight:        bold;
+    color:              #000;
+    border:             2px solid rgba(255,255,255,0.8);
+    box-shadow:         0 0 5px rgba(0,0,0,0.5);
+    pointer-events:     none;
 }
 
-.placed-chip.chip-value-100 { background: #fff; }
-.placed-chip.chip-value-500 { background: var(--red); color: #fff; }
-.placed-chip.chip-value-1000 { background: var(--yellow); }
-.placed-chip.chip-value-5000 { background: #4a90e2; }
-.placed-chip.chip-value-10000 { background: #333; color: #fff; }
+.placed-chip.chip-value-100   { background:    #fff; }
+.placed-chip.chip-value-500   { background:    var(--red); color: #fff; }
+.placed-chip.chip-value-1000  { background:    var(--yellow); }
+.placed-chip.chip-value-5000  { background:    #4a90e2; }
+.placed-chip.chip-value-10000 { background:    #333; color: #fff; }
 
-/* Responsive para pantallas muy anchas */
 @media (min-width: 1900px) {
-    .roulette-container {
-        grid-template-columns: 400px 1fr;
-    }
-    .game-info-panel {
-        font-size: 1rem;
-    }
+    .roulette-container { grid-template-columns:    400px 1fr; }
+    .game-info-panel { font-size: 1rem; }
     .wheel-container {
-        min-width: 550px;
-        min-height: 550px;
+        min-width:     550px;
+        min-height:    550px;
     }
 
     #roulette-wheel {
-        width: 550px;
-        height: 550px;
+        width:     550px;
+        height:    550px;
     }
   
     #ball {
-      top: calc(50% - 257.5px);
-      transform-origin: 7.5px 250px;
+        top:                 calc(50% - 257.5px);
+        transform-origin:    7.5px 250px;
     }
 }
