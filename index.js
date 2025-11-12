@@ -608,7 +608,7 @@ app.post('/roulette/spin', requireAuth, async (req, res) => {
             color: numberData.color,
             newBalance: usuario.balance,
             totalWinnings: totalWinnings,
-            totalBet: totalBetAmount
+            totalBet: totalBetAmount,
             betResults: betResults
         })
 
