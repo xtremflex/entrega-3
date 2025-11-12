@@ -66,7 +66,7 @@ app.engine('handlebars', engine({
     },
 
     formatDate: (date) => {
-      return new Date(date).toLocaleString('es-CL')
+      return new Date(date).toLocaleString('es-CL', { timeZone: 'America/Santiago' })
     },
 
     stringToArray: function(str) {
@@ -155,8 +155,8 @@ const Usuario = mongoose.model('Usuario', UsuarioSchema)
 const TransaccionSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario', required: true },
     type: { type: String, enum: ['deposit', 'withdrawal', 'bet', 'win'], required: true },
-    amount: { type: Number, required: true }, // +: win/deposit, -: bet/withdrawal
-    betType: { type: String, default: null }, // ej: 'Rojo', 'Pleno 32', 'Par'
+    amount: { type: Number, required: true },
+    betType: { type: String, default: null },
     gameResult: { type: Number, default: null },
     timestamp: { type: Date, default: Date.now }
 })
@@ -166,7 +166,7 @@ const Transaccion = mongoose.model('Transaccion', TransaccionSchema)
 // RESULTADOS
 const PartidaRuletaSchema = new mongoose.Schema({
     winningNumber: { type: Number, required: true },
-    color: { type: String, required: true }, // 'rojo', 'negro', 'verde'
+    color: { type: String, required: true },
     timestamp: { type: Date, default: Date.now }
 })
 
