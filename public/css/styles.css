@@ -228,7 +228,7 @@ main {
     position:    sticky;
     top:         69px;
     width:       100%;
-    height:      calc(100vh - 69px);
+    height:      calc(100vh - 120px);
     overflow:    hidden;
 }
 
@@ -969,13 +969,13 @@ main {
 .outside-bets .bet-dozen {
     grid-column:    span 2;
 }
-.bet-red   { background:    var(--roulette-red); }
-.bet-black { background:    var(--roulette-black); }
+.bet-red   { background:    var(--roulette-red)   !important; }
+.bet-black { background:    var(--roulette-black) !important; }
 
 .number-red   { background:    var(--roulette-red); }
 .number-black { background:    var(--roulette-black); }
 
-/* fichas en tablero */
+/* FICHAS EN TABLERO */
 .placed-chip {
     position:           absolute;
     top:                50%;
