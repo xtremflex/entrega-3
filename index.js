@@ -585,13 +585,13 @@ app.post('/roulette/spin', requireAuth, async (req, res) => {
                     betType: bet.type,
                     gameResult: winningNumber
                 })
-
-                betResults.push({
-                    type: bet.type,
-                    amount: bet.amount,
-                    won: didWin
-                })
             }
+
+            betResults.push({
+                type: bet.type,
+                amount: bet.amount,
+                won: didWin
+            })
         })
 
         // ACTUALIZAR SALDO SI GANO
