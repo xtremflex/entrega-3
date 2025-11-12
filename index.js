@@ -526,9 +526,11 @@ app.get(appRoutes.roulette, requireAuth, async (req, res) => {
       
           if (correspondingWin) {
               ultimasApuestas.push({
-                  ...bet,
-                  type: 'win'
-              })
+                  betType: bet.betType,
+                  amount: correspondingWin.amount,
+                  type: 'win',
+                  timestamp: bet.timestamp
+              });
           } else {
               ultimasApuestas.push(bet)
           }
@@ -600,9 +602,11 @@ app.post('/roulette/spin', requireAuth, async (req, res) => {
         bets.forEach(bet => {
             const payoutRate = getPayoutRate(bet.type)
             const didWin = checkWin(bet.type, numberData)
+            let payoutAmount = 0
 
             if (didWin) {
-                const winnings = (bet.amount * payoutRate) + bet.amount
+                const winnings = bet.amount * (payoutRate + 1)
+                payoutAmount = winnings - bet.amount
                 totalWinnings += winnings
                 winTransactions.push({
                     userId: userId,
@@ -612,11 +616,12 @@ app.post('/roulette/spin', requireAuth, async (req, res) => {
                     gameResult: winningNumber
                 })
             }
-
+    
             betResults.push({
                 type: bet.type,
                 amount: bet.amount,
-                won: didWin
+                won: didWin,
+                payout: payoutAmount
             })
         })
 
