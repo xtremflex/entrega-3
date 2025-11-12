@@ -527,7 +527,7 @@ app.get(appRoutes.roulette, requireAuth, async (req, res) => {
           if (correspondingWin) {
               ultimasApuestas.push({
                   betType: bet.betType,
-                  amount: correspondingWin.amount - bet.amount,
+                  amount: correspondingWin.amount + bet.amount,
                   type: 'win',
                   timestamp: bet.timestamp
               });
