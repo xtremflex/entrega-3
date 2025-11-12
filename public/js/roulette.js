@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const randomAngle = Math.random() * 360
 
       const wheelRotation = (360 * 9) + targetAngle + randomAngle
-      const ballRotation = (360 * -15) + wheelRotation - targetAngle + slotAngle * Math.random() - 0.5
+      const ballRotation = (360 * -15) + wheelRotation - targetAngle
 
       wheel.style.transition = 'all 4s cubic-bezier(0.2, 0.8, 0.7, 1)'
       wheel.style.transform = `rotate(${wheelRotation}deg)`
