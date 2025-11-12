@@ -817,11 +817,11 @@ main {
     background:          #fff;
     border-radius:       50%;
     position:            absolute;
-    top:                 calc(50% - 207.5px); 
+    top:                 calc(50% - 180px); 
     left:                calc(50% - 7.5px);
     z-index:             10;
     box-shadow:          0 0 5px rgba(255,255,255,0.7);
-    transform-origin:    7.5px 200px;
+    transform-origin:    7.5px 180px;
 }
 
 #result-display {
@@ -1020,7 +1020,7 @@ main {
     }
   
     #ball {
-        top:                 calc(50% - 257.5px);
-        transform-origin:    7.5px 250px;
+        top:                 calc(50% - 225px);
+        transform-origin:    7.5px 225px;
     }
 }
