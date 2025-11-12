@@ -778,8 +778,8 @@ main {
 
 .game-area {
     display:                  grid;
-    grid-template-columns:    1fr 1.5fr; /* Ruleta | Tablero */
-    grid-template-rows:       1fr auto; /* (Ruleta/Tablero) / Controles */
+    grid-template-columns:    1fr 1.5fr;
+    grid-template-rows:       1fr auto;
     height:                   100%;
     padding:                  20px;
     gap:                      20px;
