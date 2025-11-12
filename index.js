@@ -66,7 +66,7 @@ app.engine('handlebars', engine({
     },
 
     formatDate: (date) => {
-      return new Date(date).toLocaleString('es-CL')
+      return new Date(date).toLocaleString('es-CL', { timeZone: 'America/Santiago' })
     },
 
     stringToArray: function(str) {
