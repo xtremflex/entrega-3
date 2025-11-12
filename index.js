@@ -506,7 +506,33 @@ app.get(appRoutes.roulette, requireAuth, async (req, res) => {
 
       const ultimosNumeros = await PartidaRuleta.find().sort({ timestamp: -1 }).limit(5).lean()
 
-      const ultimasApuestas = await Transaccion.find({ userId: res.locals.userId, type: { $in: ['bet', 'win'] } }).sort({ timestamp: -1 }).limit(5).lean()
+      const last5BetTransactions = await Transaccion.find({ 
+          userId: res.locals.userId, 
+          type: 'bet' 
+      }).sort({ timestamp: -1 }).limit(5).lean()
+      
+      const ultimasApuestas = []
+      
+      for (const bet of last5BetTransactions) {
+          const correspondingWin = await Transaccion.findOne({
+              userId: res.locals.userId,
+              type: 'win',
+              betType: bet.betType,
+              timestamp: { 
+                  $gt: bet.timestamp,
+                  $lt: new Date(bet.timestamp.getTime() + 2000)
+              }
+          }).lean()
+      
+          if (correspondingWin) {
+              ultimasApuestas.push({
+                  ...bet,
+                  type: 'win'
+              })
+          } else {
+              ultimasApuestas.push(bet)
+          }
+      }
 
       res.render('roulette', {
           pageTitle: 'Ruleta',
