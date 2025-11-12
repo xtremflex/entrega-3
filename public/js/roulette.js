@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   
-  // --- REFERENCIAS AL DOM ---
+  // DOM
   const wheel = document.getElementById('roulette-wheel')
   const ball = document.getElementById('ball')
   const gameStateDisplay = document.getElementById('game-state')
@@ -16,19 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const lastNumbersList = document.getElementById('last-numbers-list')
   const lastBetsList = document.getElementById('last-bets-list')
 
-  // --- ESTADO DEL JUEGO ---
+  // ESTADO DEL JUEGO
   let currentBalance = initialGameData.balance
   let currentChipValue = 1000
-  let currentBets = {} // { 'Rojo': 1000, 'Pleno 5': 500 }
+  let currentBets = {}
   let totalBetAmount = 0
   let isSpinning = false
 
-  // --- MAPEO DE NÚMEROS DE LA RULETA ---
-  // Orden de los números en el HTML/CSS
+  // NÚMEROS DE LA RULETA
   const wheelNumbersOrder = [
     0, 26, 3, 35, 12, 28, 7, 29, 18, 22, 9, 31, 14, 20, 1, 33, 16, 24, 5, 10, 
     23, 8, 30, 11, 36, 13, 27, 6, 34, 17, 25, 2, 21, 4, 19, 15, 32
-  ];
+  ]
   
   const numberColors = {
     0: 'verde', 1: 'rojo', 2: 'negro', 3: 'rojo', 4: 'negro', 5: 'rojo', 6: 'negro', 7: 'rojo', 8: 'negro', 9: 'rojo', 10: 'negro',
@@ -37,44 +36,36 @@ document.addEventListener('DOMContentLoaded', () => {
     29: 'negro', 30: 'rojo', 31: 'negro', 32: 'rojo', 33: 'negro', 34: 'rojo', 35: 'negro', 36: 'rojo'
   }
 
-  // --- MANEJADORES DE EVENTOS ---
-
-  // 1. Selección de Ficha
+  // ELEGIR FICHA
   chipSelection.addEventListener('click', (e) => {
     if ( e.target.classList.contains('chip') ) {
-      // Quitar 'active' de la ficha anterior
       chipSelection.querySelector('.chip.active').classList.remove('active')
-      // Añadir 'active' a la nueva
       e.target.classList.add('active')
-      // Actualizar valor
       currentChipValue = parseInt(e.target.dataset.value)
     }
   })
 
-  // 2. Limpiar Apuestas
+  // LIMPIAR
   btnClear.addEventListener('click', () => {
     if ( isSpinning ) return
     currentBets = {}
     totalBetAmount = 0
     updateBetDisplays()
-    // Eliminar fichas visuales
     document.querySelectorAll('.placed-chip').forEach(chip => chip.remove())
   })
 
-  // 3. Realizar Apuesta (clic en el tablero)
+  // APOSTAR
   betOptions.forEach(option => {
     option.addEventListener('click', () => {
       if ( isSpinning ) return
 
       const betType = option.dataset.betType
       
-      // Validar si el saldo permite esta apuesta
       if ( currentBalance < (totalBetAmount + currentChipValue) ) {
-        showResultDisplay("Saldo insuficiente", 'error');
+        showResultDisplay("Saldo insuficiente", 'error')
         return
       }
 
-      // Añadir apuesta al estado
       if ( currentBets[betType] ) {
         currentBets[betType] += currentChipValue
       } else {
@@ -82,13 +73,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       totalBetAmount += currentChipValue
 
-      // Actualizar UI
       updateBetDisplays()
       visualizeChip(option, currentChipValue)
     })
   })
 
-  // 4. Girar la Ruleta
+  // GIRAR RULETA
   btnSpin.addEventListener('click', async () => {
     if ( isSpinning || totalBetAmount === 0 ) {
         return
@@ -99,14 +89,13 @@ document.addEventListener('DOMContentLoaded', () => {
     btnSpin.disabled = true
     btnClear.disabled = true
 
-    // Preparar array de apuestas para el backend
     const betsToSend = Object.keys(currentBets).map(type => ({
         type: type,
         amount: currentBets[type]
     }))
 
     try {
-      // Enviar apuestas al servidor
+      // MANDAR AL SV
       const response = await fetch('/roulette/spin', {
         method: 'POST',
         headers: {
@@ -122,31 +111,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const result = await response.json()
       
-      // Iniciar animación
+      // ANIMACION
       await spinWheel(result.winningNumber)
 
-      // Mostrar resultado
+      // RESULTADOS
       const winColor = numberColors[result.winningNumber]
       showResultDisplay(`¡Ganó el ${result.winningNumber} ${winColor.charAt(0).toUpperCase() + winColor.slice(1)}!`, winColor)
-
-      // Actualizar saldo y listas
       updateBalance(result.newBalance)
       updateLastNumbers(result.winningNumber, winColor)
-      
-      // Actualizar lista de últimas apuestas (simulado, idealmente el servidor devuelve esto)
       updateLastBets(betsToSend, result.totalWinnings, result.totalBet)
       
-      // Limpiar para la siguiente ronda
       resetGame()
-
     } catch (error) {
       console.error('Error al girar:', error)
       showResultDisplay(error.message, 'error')
-      resetGame() // Resetea el juego incluso si hay error
+      
+      resetGame()
     }
   })
-
-  // --- FUNCIONES AUXILIARES ---
 
   function setGameState(state) {
     gameStateDisplay.textContent = state
@@ -166,19 +148,19 @@ document.addEventListener('DOMContentLoaded', () => {
     chipVisual.classList.add('placed-chip')
     chipVisual.classList.add(`chip-value-${value}`)
     
-    // Muestra la suma total de la apuesta en ese lugar
+    // SUMA TOTAL DE APUESTAS AHI
     const betType = betOptionElement.dataset.betType
     const amountOnSpot = currentBets[betType]
     
-    // Simplificar valor (1000 -> 1K)
-    let displayValue;
+    // PASAR 1000 A 1K
+    let displayValue
     if ( amountOnSpot >= 10000 ) displayValue = (amountOnSpot / 1000) + 'K'
     else if ( amountOnSpot >= 1000 ) displayValue = (amountOnSpot / 1000).toFixed(amountOnSpot % 1000 !== 0 ? 1 : 0) + 'K'
     else displayValue = amountOnSpot
     
     chipVisual.textContent = displayValue
 
-    // Remover chip anterior si existe en este spot
+    // QUITAR CHIP ANTERIOR
     const existingChip = betOptionElement.querySelector('.placed-chip')
     if ( existingChip ) {
       existingChip.remove()
@@ -189,34 +171,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function spinWheel(winningNumber) {
     return new Promise(resolve => {
-      const index = wheelNumbersOrder.indexOf(winningNumber);
-      const slotAngle = 360 / wheelNumbersOrder.length;
+      const index = wheelNumbersOrder.indexOf(winningNumber)
+      const slotAngle = 360 / wheelNumbersOrder.length
 
-      const targetAngle = (index * slotAngle);
-      const randomAngle = Math.random() * 360;
+      const targetAngle = (index * slotAngle)
+      const randomAngle = Math.random() * 360
 
-      const wheelRotation = (360 * 9) + targetAngle + randomAngle;
-      const ballRotation = (360 * -15) + wheelRotation - targetAngle;
+      const wheelRotation = (360 * 9) + targetAngle + randomAngle
+      const ballRotation = (360 * -15) + wheelRotation - targetAngle
 
-      wheel.style.transition = 'all 4s cubic-bezier(0.2, 0.8, 0.7, 1)';
-      wheel.style.transform = `rotate(${wheelRotation}deg)`;
+      wheel.style.transition = 'all 4s cubic-bezier(0.2, 0.8, 0.7, 1)'
+      wheel.style.transform = `rotate(${wheelRotation}deg)`
 
-      ball.style.transition = 'all 4s cubic-bezier(0.1, 0.5, 0.3, 1)';
-      ball.style.transform = `rotate(${ballRotation}deg)`;
+      ball.style.transition = 'all 4s cubic-bezier(0.1, 0.5, 0.3, 1)'
+      ball.style.transform = `rotate(${ballRotation}deg)`
 
       setTimeout(() => {
-        wheel.style.transition = 'none';
-        ball.style.transition = 'none';
+        wheel.style.transition = 'none'
+        ball.style.transition = 'none'
 
-        const finalRotationWheel = wheelRotation % 360;
-        const finalRotationBall = ballRotation % 360;
+        const finalRotationWheel = wheelRotation % 360
+        const finalRotationBall = ballRotation % 360
 
-        wheel.style.transform = `rotate(${finalRotationWheel}deg)`;
-        ball.style.transform = `rotate(${finalRotationBall}deg)`;
+        wheel.style.transform = `rotate(${finalRotationWheel}deg)`
+        ball.style.transform = `rotate(${finalRotationBall}deg)`
 
-        resolve();
-      }, 4100);
-    });
+        resolve()
+      }, 4100)
+    })
   }
 
   function showResultDisplay(message, type) {
@@ -225,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
     resultDisplay.parentElement.style.opacity = 1
 
     setTimeout(() => {
-      resultDisplay.parentElement.style.opacity = 0;
+      resultDisplay.parentElement.style.opacity = 0
     }, 3000)
   }
 
@@ -245,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
     newItem.classList.add(`number-${color}`)
     newItem.textContent = number
     
-    lastNumbersList.prepend(newItem);
+    lastNumbersList.prepend(newItem)
     if ( lastNumbersList.children.length > 5 ) {
       lastNumbersList.removeChild(lastNumbersList.lastChild)
     }
@@ -256,12 +238,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const betSummary = bets.length > 1 ? `${bets.length} apuestas` : bets[0].type
     const profit = winnings - totalBet
     
-    let resultClass, resultText;
+    let resultClass, resultText
     if ( profit > 0 ) {
       resultClass = 'result-win'
       resultText = `Ganó +${formatCurrency(profit)}`
     } else {
-      resultClass = 'result-lose';
+      resultClass = 'result-lose'
       resultText = `Perdió ${formatCurrency(totalBet)}`
     }
 
@@ -270,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <span class="${resultClass}">${resultText}</span>
     `
     
-    lastBetsList.prepend(newItem);
+    lastBetsList.prepend(newItem)
     if ( lastBetsList.children.length > 5 ) {
       lastBetsList.removeChild(lastBetsList.lastChild)
     }
