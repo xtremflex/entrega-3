@@ -239,23 +239,26 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateLastBets(betResults) {
     betResults.forEach(bet => {
       const newItem = document.createElement('li')
+      
+      let resultClass, resultText, displayAmount
   
-      let resultClass, resultText
       if (bet.won) {
         resultClass = 'result-win'
         resultText = 'Ganó'
+        displayAmount = bet.payout
       } else {
         resultClass = 'result-lose'
         resultText = 'Perdió'
+        displayAmount = -bet.amount
       }
   
       newItem.innerHTML = `
-        <span>${bet.type} (${formatCurrency(bet.amount)})</span>
+        <span>${bet.type} (${formatCurrency(displayAmount)})</span>
         <span class="${resultClass}">${resultText}</span>
       `
-  
+      
       lastBetsList.prepend(newItem)
-  
+      
       if ( lastBetsList.children.length > 5 ) {
         lastBetsList.removeChild(lastBetsList.lastElementChild)
       }
