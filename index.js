@@ -494,10 +494,6 @@ function checkWin(betType, numberData) {
     if (betType === 'Columna 2' && column === 2) return true
     if (betType === 'Columna 3' && column === 3) return true
 
-    // Apuestas más complejas (split, calle, etc.) requerirían una lógica
-    // de mapeo más avanzada, que no está implementada aquí por simplicidad.
-    // Por ahora, solo manejamos apuestas simples.
-
     return false
 }
 
