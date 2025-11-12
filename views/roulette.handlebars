@@ -25,7 +25,7 @@
           {{/if}}
         </ul>
       </div>
-  
+
       <div class="info-box bets-box">
         <h3>Últimas 5 apuestas</h3>
         
@@ -35,9 +35,9 @@
               <li>
                 <span>{{this.betType}} ({{formatCurrency this.amount}})</span>
 
-		<span class="result-{{#ifCond this.type 'win'}}win{{else}}lose{{/ifCond}}">
-		  {{#ifCond this.type 'win'}}Ganó{{else}}Perdió{{/ifCond}}
-		</span>                
+				<span class="result-{{#ifCond this.type 'win'}}win{{else}}lose{{/ifCond}}">
+				  {{#ifCond this.type 'win'}}Ganó{{else}}Perdió{{/ifCond}}
+				</span>
               </li>
             {{/each}}
           {{else}}
@@ -148,7 +148,7 @@
   </div>
   
   <script>
-    // Mandar datos del servidor a JS
+    // DATOS DE JS
     const initialGameData = {{{gameData}}}
   </script>
   
