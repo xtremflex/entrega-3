@@ -91,7 +91,7 @@ footer {
     font-weight:              bold;
     position:                 relative;
     border-bottom:            2px solid var(--green);
-    text-underline-offset:    4px;
+    text-underline-offset:    5px;
 }
 
 .menu-principal a {
