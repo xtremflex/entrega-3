@@ -70,7 +70,7 @@ app.engine('handlebars', engine({
     },
 
     stringToArray: function(str) {
-      return str.split(',');
+      return str.split(',')
     }
   }
 }))
@@ -99,13 +99,13 @@ const requireAuth = (req, res, next) => {
   if (!req.cookies.usuario_id) {
     return res.redirect(appRoutes.login)
   }
-  res.locals.userId = req.cookies.usuario_id;
+  res.locals.userId = req.cookies.usuario_id
   next()
 }
 
 const redirectIfAuth = (req, res, next) => {
   if (req.cookies.usuario_id) {
-    return res.redirect(appRoutes.profile);
+    return res.redirect(appRoutes.profile)
   }
   next()
 }
@@ -260,7 +260,7 @@ app.post(appRoutes.register, async (req, res) => {
         type: 'deposit',
         amount: 50000,
         betType: 'Bono de Bienvenida'
-    });
+    })
     await transaccionInicial.save()
 
     res.redirect(appRoutes.login)
@@ -357,11 +357,11 @@ app.post(appRoutes.deposit, requireAuth, async (req, res) => {
 
         const usuario = await Usuario.findById(res.locals.userId)
         if (!usuario) {
-            return res.redirect(appRoutes.login);
+            return res.redirect(appRoutes.login)
         }
 
-        usuario.balance += amount;
-        await usuario.save();
+        usuario.balance += amount
+        await usuario.save()
 
         const nuevaTransaccion = new Transaccion({
             userId: res.locals.userId,
@@ -384,12 +384,12 @@ app.post(appRoutes.deposit, requireAuth, async (req, res) => {
           // ==========
 app.post(appRoutes.withdraw, requireAuth, async (req, res) => {
     try {
-        const amount = parseInt(req.body['monto-retiro'], 10);
+        const amount = parseInt(req.body['monto-retiro'], 10)
         if (!amount || amount <= 0) {
             return res.send('Monto inválido.')
         }
 
-        const usuario = await Usuario.findById(res.locals.userId);
+        const usuario = await Usuario.findById(res.locals.userId)
         if (!usuario) {
             return res.redirect(appRoutes.login)
         }
@@ -538,15 +538,15 @@ app.post('/roulette/spin', requireAuth, async (req, res) => {
     }
 
     try {
-        const usuario = await Usuario.findById(userId);
+        const usuario = await Usuario.findById(userId)
         if ( !usuario ) {
             return res.status(404).json({ error: 'Usuario no encontrado.' })
         }
 
         // VALIDAR SALDO
-        let totalBetAmount = 0;
+        let totalBetAmount = 0
         bets.forEach(bet => {
-            totalBetAmount += bet.amount;
+            totalBetAmount += bet.amount
         })
         if (usuario.balance < totalBetAmount) {
             return res.status(400).json({ error: 'Saldo insuficiente.' })
@@ -593,7 +593,7 @@ app.post('/roulette/spin', requireAuth, async (req, res) => {
 
         // CAMBIAR SALDO
         if (totalWinnings > 0) {
-            usuario.balance += totalWinnings;
+            usuario.balance += totalWinnings
             await Transaccion.insertMany(winTransactions)
         }
         await usuario.save()
