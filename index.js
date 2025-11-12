@@ -591,7 +591,7 @@ app.post('/roulette/spin', requireAuth, async (req, res) => {
             }
         })
 
-        // CAMBIAR SALDO
+        // ACTUALIZAR SALDO SI GANO
         if (totalWinnings > 0) {
             usuario.balance += totalWinnings
             await Transaccion.insertMany(winTransactions)
