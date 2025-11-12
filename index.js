@@ -163,7 +163,7 @@ const TransaccionSchema = new mongoose.Schema({
 
 const Transaccion = mongoose.model('Transaccion', TransaccionSchema)
 
-// PARTIDAS GUARDADAS
+// RESULTADOS
 const PartidaRuletaSchema = new mongoose.Schema({
     winningNumber: { type: Number, required: true },
     color: { type: String, required: true }, // 'rojo', 'negro', 'verde'
@@ -517,7 +517,6 @@ app.get(appRoutes.roulette, requireAuth, async (req, res) => {
           usuario: usuario,
           ultimosNumeros: ultimosNumeros,
           ultimasApuestas: ultimasApuestas,
-          // Pasamos los datos como JSON para que JS los pueda usar
           gameData: JSON.stringify({
               balance: usuario.balance,
               lastNumbers: ultimosNumeros,
@@ -592,14 +591,14 @@ app.post('/roulette/spin', requireAuth, async (req, res) => {
             }
         })
 
-        // 5. GUARDAR GANANCIAS
+        // CAMBIAR SALDO
         if (totalWinnings > 0) {
             usuario.balance += totalWinnings;
             await Transaccion.insertMany(winTransactions)
         }
         await usuario.save()
 
-        // 7. DEVOLVER RESULTADOS
+        // RETORNAR
         res.json({
             success: true,
             winningNumber: winningNumber,
