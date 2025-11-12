@@ -43,6 +43,8 @@
                   <td>{{formatDate this.timestamp}}</td>
                     
                   <td>{{this.type}}</td>
+                  
+                  <td>{{#ifCond this.betType 'bet'}}Apuesta{{/ifCond}}{{#ifCond this.betType 'win'}}Apuesta Ganada{{/ifCond}}{{#ifCond this.betType 'withdrawal'}}Retiro{{/ifCond}}{{#ifCond this.betType 'deposit'}}Depósito{{/ifCond}}</td>
                     
                   <td>{{this.betType}}</td>
                     
