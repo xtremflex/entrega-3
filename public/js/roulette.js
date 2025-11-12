@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     lastNumbersList.prepend(newItem)
     if ( lastNumbersList.children.length > 5 ) {
-      lastNumbersList.removeChild(lastNumbersList.lastChild)
+      lastNumbersList.removeChild(lastNumbersList.lastElementChild)
     }
   }
 
@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     lastBetsList.prepend(newItem)
     if ( lastBetsList.children.length > 5 ) {
-      lastBetsList.removeChild(lastBetsList.lastChild)
+      lastBetsList.removeChild(lastBetsList.lastElementChild)
     }
   }
   
