@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const result = await response.json()
+      updateBalance(currentBalance-totalBetAmount)
       
       // ANIMACION
       await spinWheel(result.winningNumber)
