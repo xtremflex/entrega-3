@@ -570,6 +570,7 @@ app.post('/roulette/spin', requireAuth, async (req, res) => {
 
         let totalWinnings = 0
         const winTransactions = []
+        const betResults = []
         bets.forEach(bet => {
             const payoutRate = getPayoutRate(bet.type)
             const didWin = checkWin(bet.type, numberData)
@@ -583,6 +584,12 @@ app.post('/roulette/spin', requireAuth, async (req, res) => {
                     amount: winnings,
                     betType: bet.type,
                     gameResult: winningNumber
+                })
+
+                betResults.push({
+                    type: bet.type,
+                    amount: bet.amount,
+                    won: didWin
                 })
             }
         })
@@ -602,6 +609,7 @@ app.post('/roulette/spin', requireAuth, async (req, res) => {
             newBalance: usuario.balance,
             totalWinnings: totalWinnings,
             totalBet: totalBetAmount
+            betResults: betResults
         })
 
     } catch (err) {
