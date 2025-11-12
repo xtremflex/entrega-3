@@ -851,7 +851,7 @@ main {
     background:         #1a1a1a;
     padding:            15px;
     border-radius:      8px;
-    border-top:         2px solid var(--roulette-gold);
+    border:             2px solid var(--roulette-gold);
 }
 
 .chip-selection {
