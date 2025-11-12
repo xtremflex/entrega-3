@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
       showResultDisplay(`¡Ganó el ${result.winningNumber} ${winColor.charAt(0).toUpperCase() + winColor.slice(1)}!`, winColor)
       updateBalance(result.newBalance)
       updateLastNumbers(result.winningNumber, winColor)
-      updateLastBets(betsToSend, result.totalWinnings, result.totalBet)
+      updateLastBets(result.betResults)
       
       resetGame()
     } catch (error) {
@@ -236,31 +236,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function updateLastBets(bets, winnings, totalBet) {
-    const newItem = document.createElement('li')
-    const betSummary = bets.length > 1 ? `${bets.length} apuestas` : bets[0].type
-    const profit = winnings - totalBet
-    
-    let resultClass, resultText
-    if ( profit > 0 ) {
-      resultClass = 'result-win'
-      resultText = `Ganó +${formatCurrency(profit)}`
-    } else {
-      resultClass = 'result-lose'
-      resultText = `Perdió ${formatCurrency(totalBet)}`
-    }
-
-    newItem.innerHTML = `
-      <span>${betSummary} (${formatCurrency(totalBet)})</span>
-      <span class="${resultClass}">${resultText}</span>
-    `
-    
-    lastBetsList.prepend(newItem)
-    if ( lastBetsList.children.length > 5 ) {
-      lastBetsList.removeChild(lastBetsList.lastElementChild)
-    }
-  }
+  function updateLastBets(betResults) {
+    betResults.forEach(bet => {
+      const newItem = document.createElement('li')
   
+      let resultClass, resultText
+      if (bet.won) {
+        resultClass = 'result-win'
+        resultText = 'Ganó'
+      } else {
+        resultClass = 'result-lose'
+        resultText = 'Perdió'
+      }
+  
+      newItem.innerHTML = `
+        <span>${bet.type} (${formatCurrency(bet.amount)})</span>
+        <span class="${resultClass}">${resultText}</span>
+      `
+  
+      lastBetsList.prepend(newItem)
+  
+      if ( lastBetsList.children.length > 5 ) {
+        lastBetsList.removeChild(lastBetsList.lastElementChild)
+      }
+    })
+  }
+
   function formatCurrency(number) {
     return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(number)
   }
