@@ -150,6 +150,7 @@ footer {
 }
 
 .btn-logout:hover {
+    color:         #fff;
     background:    var(--red);
     transform:     translateY(-2px);
 }
