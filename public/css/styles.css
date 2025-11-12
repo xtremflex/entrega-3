@@ -2,13 +2,10 @@
     --green:             #0A8754;
     --red:               #EF3054;
     --yellow:            #E6B800;
-    --yellow-alt:        #FFCC00;
-    --roulette-red:      #CC0000;
-    --roulette-black:    #222222;
-    --roulette-green:    #0A8754;
-    --roulette-gold:     #E6B800;
-    --roulette-wood:     #5A3822;
-    --betting-green:     #075A3A;
+    --green-alt:         #075A3A;
+    --red-alt:           #C00;
+    --yellow-alt:        #FC0;
+    --roulette-black:    #222;
 }
 
 * {
@@ -141,7 +138,7 @@ footer {
     transition:         all 0.3s ease;
 }
 
-.btn-acceso {
+.btn-acceso, .btn-logout {
     background:    var(--yellow);
     color:         #000;
     min-width:     100px;
@@ -149,6 +146,11 @@ footer {
 
 .btn-acceso:hover {
     background:    var(--yellow-alt);
+    transform:     translateY(-2px);
+}
+
+.btn-logout:hover {
+    background:    var(--red);
     transform:     translateY(-2px);
 }
 
@@ -669,7 +671,7 @@ main {
 }
 
 .btn-limpiar:hover {
-    background:    var(--roulette-red);
+    background:    var(--red-alt);
     transform:     translateY(-3px);
 }
 
@@ -689,7 +691,7 @@ main {
     display:           flex;
     flex-direction:    column;
     gap:               15px;
-    border-right:      2px solid var(--roulette-gold);
+    border-right:      2px solid var(--yellow);
     overflow-y:        auto;
     font-size:         0.9rem;
 }
@@ -746,14 +748,14 @@ main {
     border:             1px solid #555;
 }
 .number-rojo {
-    background:    var(--roulette-red);
+    background:    var(--red-alt);
 }
 .number-negro {
     background:    var(--roulette-black);
     color:         #fff;
 }
 .number-verde {
-    background:    var(--roulette-green);
+    background:    var(--green);
 }
 
 #last-bets-list {
@@ -827,7 +829,7 @@ main {
     left:             50%;
     transform:        translate(-50%, -50%);
     background:       rgba(0,0,0,0.8);
-    border:           2px solid var(--roulette-gold);
+    border:           2px solid var(--yellow);
     padding:          10px 20px;
     border-radius:    8px;
     z-index:          20;
@@ -838,9 +840,9 @@ main {
     opacity:          0;
     transition:       opacity 0.3s ease;
 }
-.result-display-rojo  { border-color:    var(--roulette-red); }
+.result-display-rojo  { border-color:    var(--red-alt); }
 .result-display-negro { border-color:    #555; }
-.result-display-verde { border-color:    var(--roulette-green); }
+.result-display-verde { border-color:    var(--green); }
 .result-display-error { border-color:    var(--red); }
 
 .controls-container {
@@ -853,7 +855,7 @@ main {
     background:         #1a1a1a;
     padding:            15px;
     border-radius:      8px;
-    border:             2px solid var(--roulette-gold);
+    border:             2px solid var(--yellow);
 }
 
 .chip-selection {
@@ -903,7 +905,7 @@ main {
 .betting-layout-container {
     grid-column:      2 / 3;
     grid-row:         1 / 2;
-    background:       var(--betting-green);
+    background:       var(--green-alt);
     border-radius:    10px;
     padding:          15px;
     border:           5px solid var(--roulette-wood);
@@ -942,7 +944,7 @@ main {
 
 .number-0 {
     grid-row:      1 / 2;
-    background:    var(--roulette-green);
+    background:    var(--green);
 }
 
 .main-grid {
@@ -953,7 +955,7 @@ main {
 }
 .main-grid .bet-option { min-height: 60px; }
 .main-grid .bet-2to1 {
-    background:     var(--betting-green);
+    background:     var(--green-alt);
     border-left:    2px solid #ccc;
 }
 
@@ -966,15 +968,15 @@ main {
 }
 .outside-bets .bet-option {
     min-height:    50px;
-    background:    var(--betting-green);
+    background:    var(--green-alt);
 }
 .outside-bets .bet-dozen {
     grid-column:    span 2;
 }
-.bet-red   { background:    var(--roulette-red)   !important; }
+.bet-red   { background:    var(--red-alt)   !important; }
 .bet-black { background:    var(--roulette-black) !important; }
 
-.number-red   { background:    var(--roulette-red); }
+.number-red   { background:    var(--red-alt); }
 .number-black { background:    var(--roulette-black); }
 
 /* FICHAS EN TABLERO */
