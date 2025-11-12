@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const targetAngle = (index * slotAngle)
       const randomWheelAngle = Math.random() * 360
-      const randomBallAngle = (slotAngle * Math.random() - 0.5)/2
+      const randomBallAngle = (slotAngle * Math.random() - 0.5)/3
       
 
       const wheelRotation = (360 * 9) + targetAngle + randomWheelAngle
