@@ -433,7 +433,7 @@ app.get(appRoutes.aboutUs, (req, res) => {
           //  ROULETTE-RULES
           // ================
 app.get(appRoutes.rouletteRules, (req, res) => {
-  res.render('roulette-rules', {
+  res.render('rouletteRules', {
     pageTitle: 'Reglas de la Ruleta'
   })
 })
