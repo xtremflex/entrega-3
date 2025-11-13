@@ -26,8 +26,8 @@ const appRoutes = {
       withdraw: '/account/transactions/withdraw',
 
     // INFO
-      rouletteRules: '/info/roulette-rules',
-      aboutUs: '/info/about-us',
+      rouletteRules: '/info/rouletteRules',
+      aboutUs: '/info/aboutUs',
 
     // JUEGO
       roulette: '/roulette'
