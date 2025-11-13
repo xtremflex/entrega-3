@@ -891,7 +891,7 @@ main {
 .chip[data-value="500"]   { background:    var(--red); color: #fff; }
 .chip[data-value="1000"]  { background:    var(--yellow); }
 .chip[data-value="5000"]  { background:    #4a90e2; }
-.chip[data-value="10000"] { background:    var(--green); color: #fff; } /* OG: #333*/
+.chip[data-value="10000"] { background:    #333; color: #fff; }
 
 .action-buttons {
     display:    flex;
