@@ -47,8 +47,8 @@
                   <tr>
                     <td>{{formatDate this.timestamp}}</td>
                     
-                    <td>{{this.type}}</td>
-                    
+                    <td>{{#ifCond this.type 'bet'}}Apuesta{{/ifCond}}{{#ifCond this.type 'win'}}Apuesta Ganada{{/ifCond}}{{#ifCond this.type 'withdrawal'}}Retiro{{/ifCond}}{{#ifCond this.type 'deposit'}}Depósito{{/ifCond}}</td>
+
                     <td>{{this.betType}}</td>
                     
                     <td class="{{#ifCond this.type 'deposit'}}monto-positivo{{/ifCond}}{{#ifCond this.type 'win'}}monto-positivo{{/ifCond}}{{#ifCond this.type 'withdrawal'}}monto-negativo{{/ifCond}}{{#ifCond this.type 'bet'}}monto-negativo{{/ifCond}}">
