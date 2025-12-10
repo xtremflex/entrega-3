@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro - Betanito</title>
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <style>
+    .volver-container {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 10;
+    }
+  </style>
+<style>
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.80); /* capa oscura */
+    z-index: -1;
+  }
+</style>
+
+</head>
+
+<body>
+
+<div class="volver-container">
+  <button class="btn btn-acceso" onclick="history.back()">⟵ Volver</button>
+</div>
+
+<section class="form-register">
+
+  <!-- LOGO — ahora redirige correctamente -->
+  <a href="/frontend/pages/home.html">
+    <img src="/frontend/images/betanito/icon.ico" alt="Icono Betanito 2.0" width="20%">
+  </a>
+
+  <h3>Te damos la bienvenida a Betanito</h3>
+
+  <form id="registerForm">
+
+    <input class="controls" type="text" id="name" placeholder="Nombre" required>
+    <input class="controls" type="text" id="surname" placeholder="Apellido" required>
+    <input class="controls" type="text" id="user" placeholder="Nombre de usuario" required>
+    <input class="controls" type="date" id="birth" max="2006-11-10" required>
+
+    <input class="controls" type="text" id="rut" placeholder="RUT (sin guión ni puntos)"
+      pattern="[0-9kK]{7,9}" title="Solo números o K" required>
+
+    <input class="controls" type="email" id="mail" placeholder="Correo Electrónico" required>
+
+    <input class="controls" type="password" id="password" placeholder="Contraseña" required>
+    <input class="controls" type="password" id="passwordConfirm" placeholder="Confirmar Contraseña" required>
+
+    <p>
+      Al registrarse aceptas los 
+      <a href="./aboutUs.html">Términos y condiciones</a> de Betanito
+    </p>
+
+    <input class="botons-iniciar-sesion" type="submit" value="Registrar">
+
+    <p>¿Ya tienes una cuenta? <a href="./login.html">Inicia sesión aquí</a></p>
+
+    <p id="registerError" class="error-msg"></p>
+
+  </form>
+</section>
+
+<script src="../js/auth.js"></script>
+
+</body>
+</html>

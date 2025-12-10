@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Transacciones - Betanito</title>
+
+  <link rel="stylesheet" href="/frontend/css/styles.css">
+  <link rel="icon" href="/frontend/images/betanito/icon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+<div class="contenedor-principal">
+
+  <!-- =================== HEADER =================== -->
+  <header>
+    <div class="logo-nav-container">
+
+      <!-- LOGO -->
+      <a class="logo" href="/frontend/pages/home.html">
+        <img src="/frontend/images/betanito/logo.png" alt="Logo Betanito">
+      </a>
+
+      <!-- NAV -->
+      <nav class="menu-principal">
+        <ul>
+          <li><a href="/frontend/pages/home.html">Inicio</a></li>
+          <li><a href="/frontend/pages/roulette.html">Ruleta</a></li>
+          <li class="nav-actual">Transacciones</li>
+          <li><a href="/frontend/pages/aboutUs.html">Sobre Nosotros</a></li>
+          <li><a href="/frontend/pages/rouletteRules.html">Reglas de la Ruleta</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <!-- ACCESOS DINÁMICOS -->
+    <div class="accesos" id="access-buttons"></div>
+
+  </header>
+
+  <!-- =================== MAIN =================== -->
+  <main>
+    <section class="contenido-izquierdo">
+      <div class="texto-bienvenida">
+
+        <h1>Transacciones</h1>
+        <p>Aquí puedes depositar y retirar dinero de tu cuenta Betanito.</p>
+
+        <h2><span class="saldo">Saldo actual: </span>
+          <span id="balance"></span>
+        </h2>
+
+        <!-- DEPÓSITO -->
+        <form id="form-deposito">
+          <label for="monto-deposito">Monto a depositar:</label><br>
+          <input type="number" id="monto-deposito" min="1" required>
+          <button type="submit" class="btn btn-jugar">Depositar</button>
+        </form>
+
+        <!-- RETIRO -->
+        <form id="form-retiro">
+          <label for="monto-retiro">Monto a retirar:</label><br>
+          <input type="number" id="monto-retiro" min="1" required>
+          <button type="submit" class="btn btn-jugar">Retirar</button>
+        </form>
+
+        <p id="error-msg" class="error-msg"></p>
+
+        <!-- HISTORIAL -->
+        <div class="seccion-perfil" style="margin-top: 20px;">
+          <h2>Historial de Transacciones</h2>
+
+          <div class="tabla-transacciones">
+            <table>
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Tipo</th>
+                  <th>Detalle</th>
+                  <th>Monto</th>
+                </tr>
+              </thead>
+
+              <tbody id="transactionsTable">
+                <tr><td colspan="4">Cargando...</td></tr>
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="contenido-derecho">
+      <img src="/frontend/images/bg/transactions.png"
+           alt="Fichas y billetes de casino">
+    </section>
+  </main>
+
+</div>
+
+<footer>
+  <p>Proyecto académico - 2025</p>
+</footer>
+
+<!-- JS PRINCIPAL -->
+<script src="../js/transactions.js"></script>
+
+<!-- SISTEMA GLOBAL DE BOTONES (Perfil / Logout) -->
+<script src="/frontend/js/header.js"></script>
+
+</body>
+</html>

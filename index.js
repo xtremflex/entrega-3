@@ -1,5 +1,4 @@
-require('dotenv').config()
-
+const path = require('path')
 const express = require('express')
 const { engine } = require('express-handlebars')
 const Handlebars = require('handlebars')
@@ -8,7 +7,9 @@ const cookieParser = require('cookie-parser')
 const fs = require('fs')
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
-
+const Usuario = require('./models/Usuario')
+const Transaccion = require('./models/Transaccion')
+const PartidaRuleta = require('./models/PartidaRuleta')
 const app = express()
 const port = 80
 
@@ -58,6 +59,7 @@ app.engine('handlebars', engine({
       if (a === b) {
         return options.fn(this)
       }
+
       return options.inverse(this)
     },
 
@@ -78,7 +80,7 @@ app.set('view engine', 'handlebars')
 app.set('views', './views')
 
 // Archivos estaticos
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')));
 // Leer datos de formularios y JSON
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json())
@@ -120,58 +122,7 @@ mongoose.connect(process.env.MONGO_URI, {
 })
 .catch(err => {
   console.error('Error conectando a MongoDB', err)
-})
-
-// USUARIO
-const UsuarioSchema = new mongoose.Schema({
-  name: String,
-  surname: String,
-  user: String,
-  birth: Date,
-  rut: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  mail: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  balance: {
-    type: Number,
-    required: true,
-    default: 0
-  }
-})
-
-const Usuario = mongoose.model('Usuario', UsuarioSchema)
-
-// TRANSACCIONES
-const TransaccionSchema = new mongoose.Schema({
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario', required: true },
-    type: { type: String, enum: ['deposit', 'withdrawal', 'bet', 'win'], required: true },
-    amount: { type: Number, required: true },
-    betType: { type: String, default: null },
-    gameResult: { type: Number, default: null },
-    timestamp: { type: Date, default: Date.now }
-})
-
-const Transaccion = mongoose.model('Transaccion', TransaccionSchema)
-
-// RESULTADOS
-const PartidaRuletaSchema = new mongoose.Schema({
-    winningNumber: { type: Number, required: true },
-    color: { type: String, required: true },
-    timestamp: { type: Date, default: Date.now }
-})
-
-const PartidaRuleta = mongoose.model('PartidaRuleta', PartidaRuletaSchema)
-
+});
 // ==============================
 //              HOME
 // ==============================
@@ -423,7 +374,7 @@ app.post(appRoutes.withdraw, requireAuth, async (req, res) => {
 
           // ==========
           //  ABOUT US
-          // ==========
+          // ==========\
 app.get(appRoutes.aboutUs, (req, res) => {
   res.render('aboutUs', {
     pageTitle: 'Sobre Nosotros'
@@ -648,7 +599,6 @@ app.post('/roulette/spin', requireAuth, async (req, res) => {
         res.status(500).json({ error: 'Error interno del servidor.' })
     }
 })
-
-app.listen(port, () => {
-  console.log(`Betanito vivo (http://localhost:${port})`)
-})
+app.listen(80, '0.0.0.0', () => {
+  console.log("Betanito vivo (http://localhost:80)")
+});

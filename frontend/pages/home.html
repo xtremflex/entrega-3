@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Betanito - Inicio</title>
+  <link rel="stylesheet" href="/frontend/css/styles.css" />
+  <link rel="icon" href="/frontend/images/betanito/icon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<div class="contenedor-principal">
+
+  <!-- ============ HEADER ============ -->
+  <header>
+    <div class="logo-nav-container">
+      <a class="logo" href="/frontend/pages/home.html">
+        <img src="/frontend/images/betanito/logo.png" alt="Logo Betanito">
+      </a>
+
+      <nav class="menu-principal">
+        <ul>
+          <li class="nav-actual">Inicio</li>
+          <li><a href="/frontend/pages/roulette.html">Ruleta</a></li>
+          <li><a href="/frontend/pages/transactions.html">Transacciones</a></li>
+          <li><a href="/frontend/pages/aboutUs.html">Sobre Nosotros</a></li>
+          <li><a href="/frontend/pages/rouletteRules.html">Reglas de la Ruleta</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- BOTONERA DINÁMICA -->
+    <div class="accesos" id="access-buttons"></div>
+  </header>
+
+  <!-- ============ CONTENIDO PRINCIPAL ============ -->
+  <main>
+    <section class="contenido-izquierdo">
+      <div class="texto-bienvenida">
+        <h1>Bienvenido a Betanito</h1>
+
+        <p>Disfruta del clásico juego de Ruleta Europea en una plataforma entretenida, segura y completamente responsive.</p>
+
+        <p>En Betanito puedes jugar, depositar, retirar y revisar tu historial, todo desde una interfaz moderna y fluida.</p>
+
+        <a id="btn-comenzar" class="btn btn-acceso">Comenzar a jugar</a>
+      </div>
+    </section>
+
+    <section class="contenido-derecho">
+      <img src="/frontend/images/bg/casino.png" alt="Casino Betanito">
+    </section>
+  </main>
+
+</div>
+
+<footer>
+  <p>Proyecto académico - 2025</p>
+</footer>
+<!-- ============================= -->
+<!-- 🎯 LÓGICA BOTÓN "COMENZAR A JUGAR" -->
+<!-- ============================= -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const btnComenzar = document.getElementById("btn-comenzar");
+
+  btnComenzar.addEventListener("click", async () => {
+    try {
+      const res = await fetch("/api/user/me");
+      const data = await res.json();
+
+      // NO logueado → enviar a login
+      if (!data.user) {
+        window.location.href = "/frontend/pages/login.html";
+        return;
+      }
+
+      // Logueado → enviar a la ruleta
+      window.location.href = "/frontend/pages/roulette.html";
+
+    } catch (err) {
+      console.error("Error en verificar sesión:", err);
+      window.location.href = "/frontend/pages/login.html";
+    }
+  });
+});
+</script>
+<script src="/frontend/js/header.js"></script>
+</body>
+</html>

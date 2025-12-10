@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil de Usuario - Betanito</title>
+    <link rel="stylesheet" href="/frontend/css/styles.css">
+    <link rel="icon" href="/frontend/images/betanito/icon.ico" type="image/x-icon">
+</head>
+
+<body>
+<div class="contenedor-principal">
+    <header>
+      <div class="logo-nav-container">
+        <a class="logo" href="/frontend/pages/home.html">
+          <img src="/frontend/images/betanito/logo.png" alt="Logo Betanito 2.0">
+        </a>
+
+        <nav class="menu-principal">
+          <ul>
+            <li><a href="/frontend/pages/home.html">Inicio</a></li>
+            <li><a href="/frontend/pages/roulette.html">Ruleta</a></li>
+            <li><a href="/frontend/pages/transactions.html">Transacciones</a></li>
+            <li><a href="/frontend/pages/aboutUs.html">Sobre Nosotros</a></li>
+            <li><a href="/frontend/pages/rouletteRules.html">Reglas de la Ruleta</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- SOLO CERRAR SESIÓN -->
+      <div class="accesos">
+<div class="accesos">
+<a id="btn-logout" class="btn btn-acceso btn-logout">Cerrar Sesión</a>
+</div>
+
+<script>
+document.getElementById("btn-logout").addEventListener("click", async () => {
+  try {
+    const res = await fetch("/api/auth/logout", {
+      method: "POST"
+    });
+
+    // borrar cookies localmente por si acaso
+    document.cookie = "uid=; path=/; max-age=0";
+
+    // redirigir al home
+    window.location.href = "/frontend/pages/home.html";
+  } catch (err) {
+    console.error("Error al cerrar sesión:", err);
+  }
+});
+</script>
+      </div>
+    </header>
+
+<main>
+  <section class="contenido-izquierdo">
+    <div class="texto-bienvenida">
+
+       <h1>Perfil de Usuario</h1>
+
+       <!-- INFO PERSONAL -->
+       <div class="seccion-perfil">
+         <h2>Información Personal</h2>
+
+         <div class="info-usuario">
+           <p><strong>Usuario:</strong> <span id="user"></span></p>
+           <p><strong>Nombre:</strong> <span id="fullname"></span></p>
+           <p><strong>RUT:</strong> <span id="rut"></span></p>
+           <p><strong>Email:</strong> <span id="mail"></span></p>
+         </div>
+       </div>
+
+       <!-- SALDO -->
+       <div class="seccion-perfil">
+         <h2>Saldo Actual</h2>
+
+         <div class="saldo-actual">
+           <p class="monto-saldo"><span id="balance"></span> CLP</p>
+         </div>
+       </div>
+
+       <!-- TRANSACCIONES -->
+       <div class="seccion-perfil">
+         <h2>Últimas Transacciones</h2>
+
+         <div class="tabla-transacciones">
+           <table>
+             <thead>
+               <tr>
+                 <th>Fecha</th>
+                 <th>Tipo</th>
+                 <th>Detalle</th>
+                 <th>Monto</th>
+               </tr>
+             </thead>
+
+<tbody id="transactionsTable">
+  <tr><td colspan="4">Cargando...</td></tr>
+</tbody>
+           </table>
+         </div>
+       </div>
+
+    </div>
+  </section>
+
+  <section class="contenido-derecho">
+    <img src="/frontend/images/bg/profile.png" alt="Ilustración blanca de silueta de persona">
+  </section>
+</main>
+</div>
+
+<footer>
+  <p>Proyecto académico - 2025</p>
+</footer>
+
+<script src="../js/profile.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutBtn = document.getElementById("btn-logout");
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
+
+      try {
+        await fetch("/api/auth/logout", {
+          method: "POST",
+        });
+
+        window.location.href = "/frontend/pages/home.html"; 
+      } catch (err) {
+        console.error("Error cerrando sesión:", err);
+      }
+    });
+  }
+});
+</script>
+
+</body>
+</html>

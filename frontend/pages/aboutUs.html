@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sobre Nosotros - Betanito</title>
+  <link rel="stylesheet" href="/frontend/css/styles.css" />
+  <link rel="icon" href="/frontend/images/betanito/icon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<div class="contenedor-principal">
+
+  <!-- ========== NAVBAR GENERAL ========== -->
+  <header>
+    <div class="logo-nav-container">
+      <a class="logo" href="/frontend/pages/home.html">
+        <img src="/frontend/images/betanito/logo.png" alt="Logo Betanito" />
+      </a>
+
+      <nav class="menu-principal">
+        <ul>
+          <li><a href="/frontend/pages/home.html">Inicio</a></li>
+          <li><a href="/frontend/pages/roulette.html">Ruleta</a></li>
+          <li><a href="/frontend/pages/transactions.html">Transacciones</a></li>
+          <li class="nav-actual">Sobre Nosotros</li>
+          <li><a href="/frontend/pages/rouletteRules.html">Reglas de la Ruleta</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Aquí el script dinámico insertará los botones -->
+    <div class="accesos" id="access-buttons"></div>
+  </header>
+
+  <!-- ========== CONTENIDO PRINCIPAL ========== -->
+  <main>
+    <section class="sobre-nosotros-izq">
+      <div class="info-container">
+
+        <h1 class="info-titulo">Sobre Nuestra Aplicación</h1>
+
+        <div class="info-seccion">
+          <h2>Objetivos de la Aplicación</h2>
+
+          <p>Nuestra plataforma de casino online tiene como objetivo principal ofrecer una experiencia de juego divertida, segura y responsable.</p>
+
+          <p>Buscamos recrear la emoción de un casino real desde la comodidad de tu hogar.</p>
+
+          <p>Entre nuestros objetivos se encuentran:</p>
+
+          <ul>
+            <li>Proporcionar una interfaz intuitiva</li>
+            <li>Garantizar seguridad de datos y transacciones</li>
+            <li>Ofrecer juegos con probabilidades justas</li>
+            <li>Promover el juego responsable</li>
+            <li>Innovar con nuevas características</li>
+          </ul>
+        </div>
+
+        <div class="info-seccion">
+          <h2>Equipo de Desarrollo</h2>
+          <ul>
+            <li>Nicolás Encina</li>
+            <li>Jorge Latorre</li>
+            <li>Óscar Gutiérrez</li>
+          </ul>
+        </div>
+
+        <div class="info-seccion">
+          <h2>Tecnologías Utilizadas</h2>
+          <ul>
+            <li><strong>Frontend:</strong> HTML, CSS, JavaScript</li>
+            <li><strong>Backend:</strong> Node.js, Express, PM2</li>
+            <li><strong>BD:</strong> MongoDB + Mongoose</li>
+            <li><strong>Auth:</strong> Bcrypt + Cookies</li>
+            <li><strong>Plataformas:</strong> GitHub, VSCode, AWS Academy</li>
+          </ul>
+        </div>
+
+        <div class="info-seccion">
+          <h2>Proyecto Académico</h2>
+          <p>Esta aplicación es totalmente educativa. No utiliza dinero real.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="contenido-derecho">
+      <img src="/frontend/images/bg/aboutUs.png" alt="Casino" />
+    </section>
+  </main>
+
+</div>
+
+<footer>
+  <p>Proyecto académico - 2025</p>
+</footer>
+
+<!-- Script dinámico del header -->
+<script src="/frontend/js/header.js"></script>
+
+</body>
+</html>

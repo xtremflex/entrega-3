@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ruleta - Betanito</title>
+  <link rel="stylesheet" href="/frontend/css/styles.css">
+  <link rel="icon" href="/frontend/images/betanito/icon.ico" type="image/x-icon">
+</head>
+
+<body class="ruleta-page">
+
+<header class="ruleta-header">
+  <div class="logo-nav-container">
+    <a class="logo" href="/frontend/pages/home.html">
+      <img src="/frontend/images/betanito/logo.png" alt="Logo Betanito 2.0">
+    </a>
+
+    <nav class="menu-principal">
+      <ul>
+        <li><a href="/frontend/pages/home.html">Inicio</a></li>
+        <li><a href="/frontend/pages/roulette.html" class="nav-actual">Ruleta</a></li>
+        <li><a href="/frontend/pages/transactions.html">Transacciones</a></li>
+        <li><a href="/frontend/pages/aboutUs.html">Sobre Nosotros</a></li>
+        <li><a href="/frontend/pages/rouletteRules.html">Reglas de la Ruleta</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- ===== ACCESOS DINÁMICOS (perfil, logout, login, registro) ===== -->
+  <div class="accesos" id="access-buttons"></div>
+</header>
+
+<!-- CONTENIDO ORIGINAL DE LA RULETA -->
+<div class="roulette-page">
+  <div class="roulette-container">
+
+    <section class="game-info-panel">
+      <div class="info-box state-box">
+        <h1>Mesa de Ruleta Europea</h1>
+        <h2>Estado: <span id="game-state">Recibiendo apuestas</span></h2>
+      </div>
+
+      <div class="info-box balance-box">
+        <h2>Saldo disponible</h2>
+        <span id="user-balance">$0</span>
+      </div>
+
+      <div class="info-box history-box">
+        <h3>Últimos 5 números</h3>
+        <ul id="last-numbers-list">
+          <li>-</li><li>-</li><li>-</li><li>-</li><li>-</li>
+        </ul>
+      </div>
+
+      <div class="info-box bets-box">
+        <h3>Últimas 5 apuestas</h3>
+        <ul id="last-bets-list">
+          <li>Sin apuestas recientes.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="game-area">
+      <div class="wheel-container">
+        <img id="roulette-wheel" src="/frontend/images/roulette/moving-roulette.png" alt="Ruleta Giratoria">
+        <div id="ball"></div>
+        <div id="result-display">
+          <span>¡Hagan sus apuestas!</span>
+        </div>
+      </div>
+
+      <div class="controls-container">
+        <div class="chip-selection">
+          <div class="chip" data-value="100">$100</div>
+          <div class="chip" data-value="500">$500</div>
+          <div class="chip active" data-value="1000">$1K</div>
+          <div class="chip" data-value="5000">$5K</div>
+          <div class="chip" data-value="10000">$10K</div>
+        </div>
+
+        <div class="action-buttons">
+          <button id="btn-spin" class="btn btn-girar">Girar</button>
+          <button id="btn-clear" class="btn btn-limpiar">Limpiar</button>
+        </div>
+      </div>
+
+      <div class="betting-layout-container">
+        <div class="betting-total">
+          Apuesta Total: <span id="total-bet-amount">$0</span>
+        </div>
+
+        <!-- TABLA DE APUESTAS (SIN CAMBIOS) -->
+        <div class="betting-layout">
+
+          <div class="bet-option number-0" data-bet-type="Pleno 0">0</div>
+
+           <div class="main-grid">
+              <div class="bet-option number-red" data-bet-type="Pleno 3">3</div>
+              <div class="bet-option number-black" data-bet-type="Pleno 6">6</div>
+              <div class="bet-option number-red" data-bet-type="Pleno 9">9</div>
+              <div class="bet-option number-red" data-bet-type="Pleno 12">12</div>
+              <div class="bet-option number-black" data-bet-type="Pleno 15">15</div>
+              <div class="bet-option number-red" data-bet-type="Pleno 18">18</div>
+              <div class="bet-option number-red" data-bet-type="Pleno 21">21</div>
+              <div class="bet-option number-black" data-bet-type="Pleno 24">24</div>
+              <div class="bet-option number-red" data-bet-type="Pleno 27">27</div>
+              <div class="bet-option number-red" data-bet-type="Pleno 30">30</div>
+              <div class="bet-option number-black" data-bet-type="Pleno 33">33</div>
+              <div class="bet-option number-red" data-bet-type="Pleno 36">36</div>
+              <div class="bet-option bet-2to1" data-bet-type="Columna 3">2:1</div>
+    
+              <div class="bet-option number-black" data-bet-type="Pleno 2">2</div>
+              <div class="bet-option number-red" data-bet-type="Pleno 5">5</div>
+              <div class="bet-option number-black" data-bet-type="Pleno 8">8</div>
+              <div class="bet-option number-black" data-bet-type="Pleno 11">11</div>
+              <div class="bet-option number-red" data-bet-type="Pleno 14">14</div>
+              <div class="bet-option number-black" data-bet-type="Pleno 17">17</div>
+              <div class="bet-option number-black" data-bet-type="Pleno 20">20</div>
+              <div class="bet-option number-red" data-bet-type="Pleno 23">23</div>
+              <div class="bet-option number-black" data-bet-type="Pleno 26">26</div>
+              <div class="bet-option number-black" data-bet-type="Pleno 29">29</div>
+              <div class="bet-option number-red" data-bet-type="Pleno 32">32</div>
+              <div class="bet-option number-black" data-bet-type="Pleno 35">35</div>
+              <div class="bet-option bet-2to1" data-bet-type="Columna 2">2:1</div>
+    
+              <div class="bet-option number-red" data-bet-type="Pleno 1">1</div>
+              <div class="bet-option number-black" data-bet-type="Pleno 4">4</div>
+              <div class="bet-option number-red" data-bet-type="Pleno 7">7</div>
+              <div class="bet-option number-black" data-bet-type="Pleno 10">10</div>
+              <div class="bet-option number-black" data-bet-type="Pleno 13">13</div>
+              <div class="bet-option number-red" data-bet-type="Pleno 16">16</div>
+              <div class="bet-option number-red" data-bet-type="Pleno 19">19</div>
+              <div class="bet-option number-black" data-bet-type="Pleno 22">22</div>
+              <div class="bet-option number-red" data-bet-type="Pleno 25">25</div>
+              <div class="bet-option number-black" data-bet-type="Pleno 28">28</div>
+              <div class="bet-option number-black" data-bet-type="Pleno 31">31</div>
+              <div class="bet-option number-red" data-bet-type="Pleno 34">34</div>
+              <div class="bet-option bet-2to1" data-bet-type="Columna 1">2:1</div>
+            </div>
+          <div class="outside-bets">
+            <div class="bet-option bet-dozen" data-bet-type="Docena 1">1ra 12</div>
+            <div class="bet-option bet-dozen" data-bet-type="Docena 2">2da 12</div>
+            <div class="bet-option bet-dozen" data-bet-type="Docena 3">3ra 12</div>
+            <div class="bet-option bet-even-money" data-bet-type="Falta (1-18)">1-18</div>
+            <div class="bet-option bet-even-money" data-bet-type="Par">Par</div>
+            <div class="bet-option bet-even-money bet-red" data-bet-type="Rojo"></div>
+            <div class="bet-option bet-even-money bet-black" data-bet-type="Negro"></div>
+            <div class="bet-option bet-even-money" data-bet-type="Impar">Impar</div>
+            <div class="bet-option bet-even-money" data-bet-type="Pasa (19-36)">19-36</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<footer>
+  <p>Proyecto académico - 2025</p>
+</footer>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const res = await fetch("/api/user/me");
+    const data = await res.json();
+
+    // ❌ Si no está logueado o hay error → mandar al login
+    if (!data.user || data.error) {
+      window.location.href = "/frontend/pages/login.html";
+      return;
+    }
+
+  } catch (err) {
+    console.error("Error verificando sesión:", err);
+    window.location.href = "/frontend/pages/login.html";
+  }
+});
+</script>
+
+
+<!-- SCRIPT ORIGINAL DEL JUEGO -->
+<script src="../js/roulette.js" defer></script>
+
+<!-- SISTEMA GLOBAL DE BOTONES (Perfil / Logout / Login) -->
+<script src="/frontend/js/header.js"></script>
+
+</body>
+</html>
