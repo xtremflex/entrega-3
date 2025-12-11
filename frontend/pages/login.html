@@ -4,18 +4,16 @@
   <meta charset="UTF-8">
   <title>Inicio de sesión - Betanito</title>
   <link rel="stylesheet" href="/frontend/css/styles.css">
-
-  <!-- Fondo más oscuro (80%) sin afectar tu CSS) -->
+  
   <style>
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.80); /* OSCURECIDO 80% */
+      background: rgba(0, 0, 0, 0.80); 
       z-index: -1;
     }
 
-    /* Solo posicionamiento del botón Volver */
     .volver-container {
       position: absolute;
       top: 15px;
@@ -27,14 +25,12 @@
 
 <body>
 
-<!-- BOTÓN VOLVER CON TU MISMO ESTILO -->
 <div class="volver-container">
   <button class="btn btn-acceso" onclick="history.back()">⟵ Volver</button>
 </div>
 
 <section class="form-register">
 
-  <!-- LOGO — ahora sí redirige al home -->
   <a href="/frontend/pages/home.html">
     <img src="/frontend/images/betanito/icon.ico" 
          alt="Icono Betanito 2.0" 
