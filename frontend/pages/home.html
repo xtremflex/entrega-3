@@ -64,13 +64,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const res = await fetch("/api/user/me");
       const data = await res.json();
 
-      // NO logueado → enviar a login
       if (!data.user) {
         window.location.href = "/frontend/pages/login.html";
         return;
       }
 
-      // Logueado → enviar a la ruleta
       window.location.href = "/frontend/pages/roulette.html";
 
     } catch (err) {
