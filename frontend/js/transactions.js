@@ -13,10 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       currency: "CLP",
     }).format(value);
   }
-
-  // ============================================
-  // 🔹 Cargar saldo + historial de transacciones
-  // ============================================
+  // Cargar saldo + historial de transacciones
   async function loadData() {
     try {
       // 1. Datos del usuario
@@ -31,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // ✅ FIX AQUÍ: antes uData.balance (incorrecto)
       balanceEl.textContent = formatCLP(uData.user.balance);
 
       // 2. Historial de transacciones
@@ -83,10 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
       tbody.innerHTML = `<tr><td colspan="4">Error al cargar datos.</td></tr>`;
     }
   }
-
-  // ================================
-  // 🔹 Manejar depósito
-  // ================================
+  // Manejar depósito
+  
   formDeposito.addEventListener("submit", async (e) => {
     e.preventDefault();
     errorMsg.textContent = "";
@@ -122,10 +116,9 @@ document.addEventListener("DOMContentLoaded", () => {
       errorMsg.textContent = "Error al procesar el depósito.";
     }
   });
-
-  // ================================
+  
   // 🔹 Manejar retiro
-  // ================================
+  
   formRetiro.addEventListener("submit", async (e) => {
     e.preventDefault();
     errorMsg.textContent = "";
