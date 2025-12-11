@@ -10,13 +10,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const data = await res.json();
 
-      // No autenticado → enviar a login
+      // No logeado → enviar a login
       if (data.error) {
         window.location.href = "/frontend/pages/login.html";
         return;
       }
 
-      // Sí autenticado → enviar a ruleta
+      // Sí logeado → enviar a ruleta
       window.location.href = "/frontend/pages/roulette.html";
 
     } catch (err) {
