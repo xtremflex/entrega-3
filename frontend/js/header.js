@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const access = document.getElementById("access-buttons");
-  if (!access) return; // La página no tiene botones
+  if (!access) return; 
 
   try {
     const res = await fetch("/api/user/me");
