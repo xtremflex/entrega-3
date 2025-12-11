@@ -66,7 +66,7 @@ try {
 
       // Últimos números
       if (Array.isArray(data.lastNumbers)) {
-        data.lastNumbers.forEach(n => {
+        data.lastNumbers.reverse().forEach(n => {
           const color = n.color === "rojo" ? "rojo" :
                         n.color === "negro" ? "negro" :
                         "verde";
@@ -76,7 +76,7 @@ try {
 
       // Últimas apuestas
       if (Array.isArray(data.lastBets)) {
-        data.lastBets.forEach(bet => {
+       data.lastBets.reverse().forEach(bet => {
           updateLastBets([
             {
               type: bet.betType,
