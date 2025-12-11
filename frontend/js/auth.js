@@ -1,8 +1,3 @@
-// ================================
-//   AUTENTICACIÓN BETANITO
-// ================================
-
-// ---- REGISTRO ----
 const registerForm = document.getElementById("registerForm");
 
 if (registerForm) {
@@ -33,7 +28,7 @@ if (registerForm) {
         return;
       }
 
-      // Registro exitoso → enviar al login
+      
       window.location.href = "/frontend/pages/login.html";
 
     } catch (err) {
@@ -44,7 +39,6 @@ if (registerForm) {
 
 
 
-// ---- LOGIN ----
 const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
@@ -69,7 +63,7 @@ if (loginForm) {
         return;
       }
 
-      // Inicio correcto → enviar al home
+     
       window.location.href = "/frontend/pages/home.html";
 
     } catch (err) {
@@ -80,7 +74,7 @@ if (loginForm) {
 
 
 
-// ---- LOGOUT ----
+
 const logoutBtn = document.getElementById("btn-logout");
 
 if (logoutBtn) {
