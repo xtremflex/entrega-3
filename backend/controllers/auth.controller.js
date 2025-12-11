@@ -3,9 +3,6 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
 
-  // =====================================================
-  //                     REGISTRO
-  // =====================================================
   register: async (req, res) => {
     try {
       const { name, surname, user, birth, rut, mail, password } = req.body;
@@ -42,9 +39,6 @@ module.exports = {
     }
   },
 
-  // =====================================================
-  //                     LOGIN (RUT)
-  // =====================================================
   login: async (req, res) => {
     try {
       const { rut, password } = req.body;
@@ -76,10 +70,6 @@ module.exports = {
       res.status(500).json({ error: "Error interno" });
     }
   },
-
-  // =====================================================
-  //                     LOGOUT
-  // =====================================================
   logout: (req, res) => {
     try {
       res.clearCookie("uid");
