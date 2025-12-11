@@ -23,7 +23,7 @@ if (registerForm) {
       const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",  // 👈 ENVÍA Y GUARDA LA COOKIE
+        credentials: "include",  
         body: JSON.stringify(data)
       });
 
@@ -58,7 +58,7 @@ if (loginForm) {
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",  // 👈 NECESARIO PARA GUARDAR COOKIE
+        credentials: "include", 
         body: JSON.stringify({ rut, password })
       });
 
@@ -90,7 +90,7 @@ if (logoutBtn) {
     try {
       await fetch("/api/auth/logout", {
         method: "POST",
-        credentials: "include"  // 👈 NECESARIO PARA BORRAR LA COOKIE
+        credentials: "include" 
       });
 
       window.location.href = "/frontend/pages/home.html";
