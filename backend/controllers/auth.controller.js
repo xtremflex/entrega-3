@@ -14,13 +14,11 @@ module.exports = {
         return res.status(400).json({ error: "Todos los campos son obligatorios" });
       }
 
-      // Verificar si el RUT YA existe
       const existe = await Usuario.findOne({ rut });
       if (existe) {
         return res.status(400).json({ error: "El RUT ya está registrado" });
       }
-
-      // Hash de la contraseña
+      
       const hashedPassword = await bcrypt.hash(password, 10);
 
       const nuevoUsuario = new Usuario({
@@ -55,20 +53,17 @@ module.exports = {
         return res.status(400).json({ error: "RUT y contraseña son obligatorios" });
       }
 
-      // Buscar usuario por RUT
       const usuario = await Usuario.findOne({ rut });
 
       if (!usuario) {
         return res.status(400).json({ error: "Usuario o contraseña incorrecta" });
       }
 
-      // Comparar contraseñas
       const ok = await bcrypt.compare(password, usuario.password);
       if (!ok) {
         return res.status(400).json({ error: "Usuario o contraseña incorrecta" });
       }
 
-      // Crear cookie de sesión
       res.cookie("uid", usuario._id, {
         httpOnly: true,
         sameSite: "lax"
