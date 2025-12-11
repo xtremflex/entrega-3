@@ -6,19 +6,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const formDeposito = document.getElementById("form-deposito");
   const formRetiro = document.getElementById("form-retiro");
 
-  // Utilidad para formatear CLP
+ 
   function formatCLP(value) {
     return new Intl.NumberFormat("es-CL", {
       style: "currency",
       currency: "CLP",
     }).format(value);
   }
-  // Cargar saldo + historial de transacciones
+
   async function loadData() {
     try {
-      // 1. Datos del usuario
+      
       const uRes = await fetch("/api/user/me", {
-        credentials: "include"   // ← IMPORTANTE
+        credentials: "include"   
       });
 
       const uData = await uRes.json();
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       balanceEl.textContent = formatCLP(uData.user.balance);
 
-      // 2. Historial de transacciones
+    
       const tRes = await fetch("/api/user/transactions", {
         credentials: "include"
       });
