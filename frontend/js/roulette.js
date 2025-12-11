@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const lastNumbersList = document.getElementById("last-numbers-list");
   const lastBetsList = document.getElementById("last-bets-list");
 
-  // ======== ESTADO =========
+
   let currentBalance = 0;
   let currentChipValue = 1000;
   let currentBets = {};
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     31: "negro", 32: "rojo", 33: "negro", 34: "rojo", 35: "negro", 36: "rojo"
   };
 
-  // ======== CARGAR SALDO INICIAL DESDE API ========
+
 try {
   const res = await fetch("/api/user/me", {
     credentials: "include"
@@ -54,7 +54,7 @@ try {
 } catch (err) {
   console.error("Error cargando saldo inicial:", err);
 }
-  // ======== CARGAR ESTADO INICIAL ========
+  
   async function loadInitialState() {
     try {
       const res = await fetch("/api/roulette/state", {
@@ -64,7 +64,7 @@ try {
       const data = await res.json();
       if (!res.ok) return;
 
-      // Últimos números
+    
       if (Array.isArray(data.lastNumbers)) {
         data.lastNumbers.reverse().forEach(n => {
           const color = n.color === "rojo" ? "rojo" :
@@ -74,7 +74,7 @@ try {
         });
       }
 
-      // Últimas apuestas
+      
       if (Array.isArray(data.lastBets)) {
        data.lastBets.reverse().forEach(bet => {
           updateLastBets([
@@ -95,7 +95,7 @@ try {
 
   loadInitialState();
 
-  // ======== SELECCIÓN DE FICHAS ========
+
   chipSelection.addEventListener("click", (e) => {
     if (!e.target.classList.contains("chip")) return;
 
@@ -106,7 +106,7 @@ try {
     currentChipValue = parseInt(e.target.dataset.value, 10);
   });
 
-  // ======== LIMPIAR APUESTAS ========
+ 
   btnClear.addEventListener("click", () => {
     if (isSpinning) return;
     currentBets = {};
@@ -115,7 +115,6 @@ try {
     document.querySelectorAll(".placed-chip").forEach(chip => chip.remove());
   });
 
-  // ======== AGREGAR APUESTA ========
   betOptions.forEach((option) => {
     option.addEventListener("click", () => {
       if (isSpinning) return;
@@ -137,7 +136,7 @@ try {
     });
   });
 
-  // ======== GIRAR RULETA ========
+
   btnSpin.addEventListener("click", async () => {
     if (isSpinning || totalBetAmount === 0) return;
 
@@ -183,7 +182,6 @@ try {
     }
   });
 
-  // ======== FUNCIONES COMPLEMENTO ========
   function setGameState(state) {
     gameStateDisplay.textContent = state;
   }
