@@ -1025,7 +1025,7 @@ main {
     }
 }
 /* =============================================== */
-/* NAVBAR EXCLUSIVO PARA RULETA                    */
+/* barra de navegacionn EXCLUSIVO PARA RULETA                    */
 /* No modifica las otras páginas que usan layout   */
 /* =============================================== */
 
@@ -1041,12 +1041,10 @@ main {
     z-index: 2000;
 }
 
-/* Logo */
 .ruleta-header .logo img {
     height: 70px;
 }
 
-/* Menú */
 .ruleta-header .menu-principal ul {
     display: flex;
     list-style: none;
@@ -1063,7 +1061,6 @@ main {
     position: relative;
 }
 
-/* Hover amarillo */
 .ruleta-header .menu-principal a:hover {
     color: var(--yellow);
 }
@@ -1072,7 +1069,6 @@ main {
     width: 100%;
 }
 
-/* Subrayado dinámico */
 .ruleta-header .menu-principal a::after {
     content: '';
     position: absolute;
@@ -1084,13 +1080,11 @@ main {
     transition: width 0.3s ease;
 }
 
-/* Página actual */
 .ruleta-header .nav-actual {
     color: var(--yellow);
     border-bottom: 2px solid var(--yellow);
 }
 
-/* Botones derecha */
 .ruleta-header .btn-acceso,
 .ruleta-header .btn-logout {
     background: var(--yellow);
@@ -1112,7 +1106,6 @@ main {
     transform: translateY(-2px);
 }
 
-/* Fondo del body más oscuro en ruleta */
 body.ruleta-page {
     background-color: #000;
     background-image: url('/frontend/images/bg/roulette.png');
