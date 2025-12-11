@@ -1,4 +1,3 @@
-// backend/middleware/auth.js
 module.exports = function (req, res, next) {
   const uid = req.cookies.uid;
 
