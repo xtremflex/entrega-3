@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const tableBody = document.getElementById("transactionsTable");
 
   // ================================
-  // 🔹 1. Cargar datos del usuario
+  // 1. Cargar datos del usuario
   // ================================
   try {
     const res = await fetch("/api/user/me", {
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // =====================================
-  // 🔹 2. Cargar últimas transacciones
+  // 2. Cargar últimas transacciones
   // =====================================
   try {
     const res = await fetch("/api/user/transactions", {
