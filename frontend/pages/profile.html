@@ -26,7 +26,6 @@
         </nav>
       </div>
 
-      <!-- SOLO CERRAR SESIÓN -->
       <div class="accesos">
 <div class="accesos">
 <a id="btn-logout" class="btn btn-acceso btn-logout">Cerrar Sesión</a>
@@ -38,11 +37,7 @@ document.getElementById("btn-logout").addEventListener("click", async () => {
     const res = await fetch("/api/auth/logout", {
       method: "POST"
     });
-
-    // borrar cookies localmente por si acaso
     document.cookie = "uid=; path=/; max-age=0";
-
-    // redirigir al home
     window.location.href = "/frontend/pages/home.html";
   } catch (err) {
     console.error("Error al cerrar sesión:", err);
@@ -57,8 +52,7 @@ document.getElementById("btn-logout").addEventListener("click", async () => {
     <div class="texto-bienvenida">
 
        <h1>Perfil de Usuario</h1>
-
-       <!-- INFO PERSONAL -->
+        
        <div class="seccion-perfil">
          <h2>Información Personal</h2>
 
@@ -70,7 +64,6 @@ document.getElementById("btn-logout").addEventListener("click", async () => {
          </div>
        </div>
 
-       <!-- SALDO -->
        <div class="seccion-perfil">
          <h2>Saldo Actual</h2>
 
@@ -78,8 +71,7 @@ document.getElementById("btn-logout").addEventListener("click", async () => {
            <p class="monto-saldo"><span id="balance"></span> CLP</p>
          </div>
        </div>
-
-       <!-- TRANSACCIONES -->
+        
        <div class="seccion-perfil">
          <h2>Últimas Transacciones</h2>
 
