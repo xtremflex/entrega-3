@@ -12,16 +12,15 @@
 
 <div class="contenedor-principal">
 
-  <!-- =================== HEADER =================== -->
   <header>
     <div class="logo-nav-container">
 
-      <!-- LOGO -->
+
       <a class="logo" href="/frontend/pages/home.html">
         <img src="/frontend/images/betanito/logo.png" alt="Logo Betanito">
       </a>
 
-      <!-- NAV -->
+
       <nav class="menu-principal">
         <ul>
           <li><a href="/frontend/pages/home.html">Inicio</a></li>
@@ -34,12 +33,12 @@
 
     </div>
 
-    <!-- ACCESOS DINÁMICOS -->
+
     <div class="accesos" id="access-buttons"></div>
 
   </header>
 
-  <!-- =================== MAIN =================== -->
+
   <main>
     <section class="contenido-izquierdo">
       <div class="texto-bienvenida">
@@ -51,14 +50,13 @@
           <span id="balance"></span>
         </h2>
 
-        <!-- DEPÓSITO -->
+    
         <form id="form-deposito">
           <label for="monto-deposito">Monto a depositar:</label><br>
           <input type="number" id="monto-deposito" min="1" required>
           <button type="submit" class="btn btn-jugar">Depositar</button>
         </form>
 
-        <!-- RETIRO -->
         <form id="form-retiro">
           <label for="monto-retiro">Monto a retirar:</label><br>
           <input type="number" id="monto-retiro" min="1" required>
@@ -67,7 +65,7 @@
 
         <p id="error-msg" class="error-msg"></p>
 
-        <!-- HISTORIAL -->
+        
         <div class="seccion-perfil" style="margin-top: 20px;">
           <h2>Historial de Transacciones</h2>
 
@@ -105,10 +103,9 @@
   <p>Proyecto académico - 2025</p>
 </footer>
 
-<!-- JS PRINCIPAL -->
+
 <script src="../js/transactions.js"></script>
 
-<!-- SISTEMA GLOBAL DE BOTONES (Perfil / Logout) -->
 <script src="/frontend/js/header.js"></script>
 
 </body>
