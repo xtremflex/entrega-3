@@ -5,9 +5,6 @@ const roulette = require('../services/rouletteService');
 
 module.exports = {
 
-  // =====================================================
-  //                       SPIN
-  // =====================================================
   spin: async (req, res) => {
     try {
       const uid = req.cookies.uid;
@@ -23,10 +20,10 @@ module.exports = {
       if (usuario.balance < totalBet)
         return res.status(400).json({ error: "Saldo insuficiente" });
 
-      // Descontar saldo
+   
       usuario.balance -= totalBet;
 
-      // Registrar apuestas
+   
       await Transaccion.insertMany(
         bets.map(b => ({
           userId: uid,
@@ -36,7 +33,7 @@ module.exports = {
         }))
       );
 
-      // Número ganador
+ 
       const winningNumber = Math.floor(Math.random() * 37);
       const numberData = roulette.getNumberData(winningNumber);
 
@@ -44,7 +41,7 @@ module.exports = {
       const betResults = [];
       const winTransactions = [];
 
-      // Evaluar apuestas
+   
       for (const bet of bets) {
         const payoutRate = roulette.getPayoutRate(bet.type);
         const won = roulette.checkWin(bet.type, numberData);
@@ -70,15 +67,15 @@ module.exports = {
         });
       }
 
-      // Aplicar ganancias
+   
       usuario.balance += totalWinnings;
       await usuario.save();
 
-      // Registrar transacciones de ganancia
+   
       if (winTransactions.length > 0)
         await Transaccion.insertMany(winTransactions);
 
-      // Guardar partida COMPLETA
+      
       await PartidaRuleta.create({
         userId: uid,
         winningNumber,
@@ -88,7 +85,7 @@ module.exports = {
         totalWinnings
       });
 
-      // Responder
+   
       res.json({
         success: true,
         winningNumber,
@@ -106,9 +103,6 @@ module.exports = {
   },
 
 
-  // =====================================================
-  //                   ESTADO INICIAL RULETA
-  // =====================================================
   state: async (req, res) => {
     try {
       const uid = req.cookies.uid;
@@ -117,14 +111,14 @@ module.exports = {
       const usuario = await Usuario.findById(uid).lean();
       if (!usuario) return res.status(404).json({ error: "Usuario no existe" });
 
-      // Últimos 5 números
+   
       const lastNumbers = await PartidaRuleta
         .find()
         .sort({ timestamp: -1 })
         .limit(5)
         .lean();
 
-      // Últimas apuestas del usuario
+  
       const lastBets = await Transaccion
         .find({ userId: uid, type: { $in: ["bet", "win"] } })
         .sort({ timestamp: -1 })
