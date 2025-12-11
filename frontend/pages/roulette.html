@@ -25,12 +25,9 @@
       </ul>
     </nav>
   </div>
-
-  <!-- ===== ACCESOS DINÁMICOS (perfil, logout, login, registro) ===== -->
   <div class="accesos" id="access-buttons"></div>
 </header>
 
-<!-- CONTENIDO ORIGINAL DE LA RULETA -->
 <div class="roulette-page">
   <div class="roulette-container">
 
@@ -88,8 +85,7 @@
         <div class="betting-total">
           Apuesta Total: <span id="total-bet-amount">$0</span>
         </div>
-
-        <!-- TABLA DE APUESTAS (SIN CAMBIOS) -->
+        
         <div class="betting-layout">
 
           <div class="bet-option number-0" data-bet-type="Pleno 0">0</div>
@@ -168,8 +164,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const res = await fetch("/api/user/me");
     const data = await res.json();
-
-    // ❌ Si no está logueado o hay error → mandar al login
+    
     if (!data.user || data.error) {
       window.location.href = "/frontend/pages/login.html";
       return;
@@ -181,13 +176,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 </script>
-
-
-<!-- SCRIPT ORIGINAL DEL JUEGO -->
 <script src="../js/roulette.js" defer></script>
-
-<!-- SISTEMA GLOBAL DE BOTONES (Perfil / Logout / Login) -->
 <script src="/frontend/js/header.js"></script>
-
 </body>
 </html>
