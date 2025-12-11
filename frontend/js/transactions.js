@@ -117,8 +117,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
   
-  // 🔹 Manejar retiro
-  
   formRetiro.addEventListener("submit", async (e) => {
     e.preventDefault();
     errorMsg.textContent = "";
