@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  // ======== REFERENCIAS DOM ========
   const wheel = document.getElementById("roulette-wheel");
   const ball = document.getElementById("ball");
   const gameStateDisplay = document.getElementById("game-state");
@@ -47,7 +46,7 @@ try {
   if (res.ok) {
     const data = await res.json();
     if (!data.error) {
-      currentBalance = data.user.balance;  // ← FIX
+      currentBalance = data.user.balance;  
       updateBalance(currentBalance);
     }
   }
