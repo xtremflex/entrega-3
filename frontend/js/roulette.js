@@ -58,7 +58,7 @@ try {
   async function loadInitialState() {
     try {
       const res = await fetch("/api/roulette/state", {
-        credentials: "include"  // 🔥 Sesión
+        credentials: "include"
       });
 
       const data = await res.json();
@@ -155,7 +155,7 @@ try {
       const response = await fetch("/api/roulette/spin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include", // 🔥 SESIÓN ACTIVADA
+        credentials: "include",
         body: JSON.stringify({ bets: betsToSend })
       });
 
